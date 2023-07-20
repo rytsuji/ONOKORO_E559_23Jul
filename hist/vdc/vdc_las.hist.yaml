@@ -1,0 +1,60 @@
+anchor:
+ - &xbin 100
+ - &xmin -1200
+ - &xmax 1000
+ - &ybin 100
+ - &ymin -150
+ - &ymax 100
+ - &abin 100
+ - &amin -200
+ - &amax 200
+ - &bbin 100
+ - &bmin -50
+ - &bmax 50 
+
+group:
+ - name: vdc_las
+   title: VDC LAS hist
+   contents:
+     - name: x_las
+       title: X  LAS
+       x: ["vdc_las_m.fX", *xbin, *xmin, *xmax]
+     - name: x_las_acut
+       title: X  LAS
+       cut: abs(vdc_las_m.fA)<1
+       x: ["vdc_las_m.fX", *xbin, *xmin, *xmax]
+     - name: a_las
+       title:  A LAS
+       x: ["vdc_las_m.fA*1000", *abin, *amin, *amax]
+     - name: y_las
+       title: Y  LAS
+       x: ["vdc_las_m.fY", *ybin, *ymin, *ymax]
+     - name: b_las
+       title:  B LAS
+       x: ["vdc_las_m.fB*1000", *bbin, *bmin, *bmax]       
+     - name: x_a_las
+       title: X vs A LAS
+       x: ["vdc_las_m.fX", *xbin, *xmin, *xmax]              
+       y: ["vdc_las_m.fA*1000", *abin, *amin, *amax]
+     - name: y_b_las
+       title: Y vs B LAS
+       x: ["vdc_las_m.fY", *ybin, *ymin , *ymax]
+       y: ["vdc_las_m.fB*1000",  *bbin, *bmin, *bmax]       
+     - name: x_y_las
+       title: X vs Y LAS
+       x: ["vdc_las_m.fX", *xbin, *xmin, *xmax]
+       y: ["vdc_las_m.fY", *ybin, *ymin , *ymax]
+     - name: a_b_las
+       title: A vs B LAS
+       x: ["vdc_las_m.fA*1000", *abin, *amin, *amax]       
+       y: ["vdc_las_m.fB*1000",  *bbin, *bmin, *bmax]       
+       
+
+
+
+
+
+
+
+
+     

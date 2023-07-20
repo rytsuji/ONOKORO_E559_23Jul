@@ -1,0 +1,11 @@
+{ decls }
+namespace art {  }
+
+[ libe559.so ]
+# List of selected classes
+class art::TTimingChargeMultiHitMappingProcessor
+class art::TVDCClusterizationProcessor_mod
+class art::TVDCTrackingProcessor_mod
+header TTimingChargeMultiHitMappingProcessor.h
+header TVDCClusterizationProcessor_mod.h
+header TVDCTrackingProcessor_mod.h

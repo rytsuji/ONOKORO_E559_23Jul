@@ -1,0 +1,20 @@
+# file : pla_gr_vme.yaml 
+# date : 2022.07.01 by Y.HIJIKATA
+# lastest update : 2022.07.01 by Y.HIJIKATA
+
+Processor:
+  - include:
+      name: pla_las.tmpl.yaml
+      replace:
+        CATID: 22
+        VMEFERA: vme
+  - include:
+      name: pla_las.tmpl.yaml
+      replace:
+        CATID: 12
+        VMEFERA: fera
+      
+      
+
+
+      

@@ -1,0 +1,15 @@
+  - name: gate_array_init
+    type: art::TGateArrayInitializer
+    parameter:
+      OutputTransparency: 1
+
+  - name: true_chance
+    type: art::TTreeFormulaGateProcessor
+    parameter:
+      Definitions:
+        - "gate_true_chance; tref_las.fTiming-tref_grtrig.fTiming>@TRUE_MIN tref_las.fTiming-tref_grtrig.fTiming<@TRUE_MAX"
+	
+  - name: stop_proc
+    type: art::TGateStopProcessor
+    parameter:
+      GateName: "true_chance"

@@ -1,0 +1,60 @@
+anchor:
+ - &xbin 100
+ - &xmin -700
+ - &xmax 700
+ - &ybin 100
+ - &ymin -20
+ - &ymax 20
+ - &abin 100
+ - &amin -100
+ - &amax 100
+ - &bbin 100
+ - &bmin -20
+ - &bmax 20 
+
+group:
+ - name: vdc_gr
+   title: VDC GR hist
+   contents:
+     - name: x_gr
+       title: X  GR
+       x: ["vdc_gr_m.fX", *xbin, *xmin, *xmax]
+     - name: x_gr_acut
+       title: X  GR
+       cut: abs(vdc_gr_m.fA)<1
+       x: ["vdc_gr_m.fX", *xbin, *xmin, *xmax]
+     - name: a_gr
+       title:  A GR
+       x: ["vdc_gr_m.fA*1000", *abin, *amin, *amax]
+     - name: y_gr
+       title: Y  GR
+       x: ["vdc_gr_m.fY", *ybin, *ymin, *ymax]
+     - name: b_gr
+       title:  B GR
+       x: ["vdc_gr_m.fB*1000", *bbin, *bmin, *bmax]       
+     - name: x_a_gr
+       title: X vs A GR
+       x: ["vdc_gr_m.fX", *xbin, *xmin, *xmax]              
+       y: ["vdc_gr_m.fA*1000", *abin, *amin, *amax]
+     - name: y_b_gr
+       title: Y vs B GR
+       x: ["vdc_gr_m.fY", *ybin, *ymin , *ymax]
+       y: ["vdc_gr_m.fB*1000",  *bbin, *bmin, *bmax]       
+     - name: x_y_gr
+       title: X vs Y GR
+       x: ["vdc_gr_m.fX", *xbin, *xmin, *xmax]
+       y: ["vdc_gr_m.fY", *ybin, *ymin , *ymax]
+     - name: a_b_gr
+       title: A vs B GR
+       x: ["vdc_gr_m.fA*1000", *abin, *amin, *amax]       
+       y: ["vdc_gr_m.fB*1000",  *bbin, *bmin, *bmax]       
+       
+
+
+
+
+
+
+
+
+     

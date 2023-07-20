@@ -1,0 +1,36 @@
+anchor:
+  - &id ["vdc_@GL@_raw.fID", @NID@, -0.5, @NID@-0.5]
+  - &tcal ["vdc_@GL@_cal.fTiming", 1000, @TMIN@, @TMAX@]
+  - &tcal ["vdc_@GL@_cal.fTiming", 1000, 0, @QMAX@]
+
+alias:
+
+group:
+  - name: vdc_@GL@
+    title: VDC @GL@
+    contents:
+      - name: vdc_@GL@_id
+        title: VDC @GL@ ID
+        x: *id
+      - name: vdc_@GL@_tcal
+        title: VDC @GL@ T_{cal}
+        x: *tcal
+      - name: vdc_@GL@_qcal
+        title: VDC @GL@ Q_{cal}
+        x: *qcal
+
+      - name: vdc_@GL@_id_tcal
+        title: VDC @GL@ ID vs T_{cal}
+        x: *id
+        y: *tcal
+      - name: vdc_@GL@_id_qcal
+        title: VDC @GL@ ID vs Q_{cal}
+        x: *id
+        y: *tcal
+      - name: vdc_@GL@_tcal_qcal
+        title: VDC @GL@ T_{cal} vs Q_{ca;}
+        x: *tcal
+        y: *qcal
+      
+       
+

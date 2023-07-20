@@ -1,0 +1,68 @@
+group:
+ - name: pid 
+   title: PID of LAS and GR
+   contents:
+     - name: de_rf1_gr
+       title: deltaE-RF1 GR
+       x: ["fmod(tref_grtrig.fTiming-rf1.fTiming,142.0)", 0, 150, 0]
+       y: ["pla_gr_vme_1.fCharge", 1000, 0, 4000]
+     - name: de_rf2_gr
+       title: deltaE-RF2 GR
+       x: ["fmod(tref_grtrig.fTiming-rf2.fTiming,142.0)", 0, 150, 0]
+       y: ["pla_gr_vme_1.fCharge", 1000, 0, 4000]
+     - name: de_rf3_gr
+       title: deltaE-RF3 GR
+       x: ["fmod(tref_grtrig.fTiming-rf3.fTiming,142.0)", 0, 150, 0]
+       y: ["pla_gr_vme_1.fCharge", 1000, 0, 4000]       
+     - name: tot_rf_gr
+       title: TOT-RF of VDC GR
+       x: ["tref_grtrig.fTiming-rf1.fTiming", 300, -300, 0]
+       y: ["vdc_gr_raw.fCharge", 1000, 0, 4000]
+     - name: x_de_gr
+       title: X-deltaE GR
+       x: ["pla_gr_vme_1.GetTDiff()", 300, -10, 20]       
+       y: ["pla_gr_vme_1.fCharge",1000, 0, 4000]
+     - name: de_gr
+       title: deltaE GR
+       x: ["pla_gr_vme_1.fCharge", 1000, 0, 4000]
+     - name: de1_de2_gr
+       title: deltaE1-deltaE2 GR
+       x: ["pla_gr_vme_1.fCharge", 1000, 0, 4000]
+       y: ["pla_gr_vme_2.fCharge", 1000, 0, 4000]       
+       
+
+     - name: de_rf1_las
+       title: deltaE-RF1 LAS
+       x: ["fmod(tref_las.fTiming-rf1.fTiming,142.)", 300, 0, 150]
+       y: ["pla_las_vme_3.fCharge", 1000, 0, 4000]
+     - name: de_rf2_las
+       title: deltaE-RF2 LAS
+       x: ["fmod(tref_las.fTiming-rf2.fTiming,142.)", 300, 0, 150]
+       y: ["pla_las_vme_3.fCharge", 1000, 0, 4000]
+     - name: de_rf3_las
+       title: deltaE-RF3 LAS
+       x: ["fmod(tref_las.fTiming-rf3.fTiming,142.)", 300, 0, 150]       
+       y: ["pla_las_vme_3.fCharge", 1000, 0, 4000]       
+     - name: tot_rf_las
+       title: TOT-RF of LAS 
+       x: ["fmod(tref_las.fTiming-rf1.fTiming,142.0)", 1500, 0, 1500]
+       y: ["vdc_las_raw.fCharge", 1000, 0, 4000]
+     - name: x_de_las
+       title: X-deltaE LAS
+       x: ["pla_las_vme_3.GetTDiff()", 240, -50, 10]       
+       y: ["pla_las_vme_3.fCharge", 1000, 0, 4000]
+     - name: de_las
+       title: deltaE LAS
+       x: ["pla_las_vme_3.GetTDiff()", 240, -50, 10]              
+     - name: de1_de2_las
+       title: deltaE1-deltaE2 LAS
+       x: ["pla_las_vme_3.fCharge", 1000, 0, 4000]
+       y: ["pla_las_vme_5.fCharge", 1000, 0, 4000]       
+
+
+
+
+
+
+
+     
