@@ -11,7 +11,7 @@
 
 #include <algorithm>
 
-#include "TVDCClusterizationProcessor_mod.h"
+#include "TVDCClusterizationSizeSelectableProcessor.h"
 #include "TMWDCParameter.h"
 #include "TMWDCPlaneInfo.h"
 #include "TTimingChargeData.h"
@@ -27,12 +27,12 @@
 #include <TClonesArray.h>
 #include <numeric>
 
-using art::TVDCClusterizationProcessor_mod;
+using art::TVDCClusterizationSizeSelectableProcessor;
 
-ClassImp(art::TVDCClusterizationProcessor_mod);
+ClassImp(art::TVDCClusterizationSizeSelectableProcessor);
 
 // Default constructor
-  TVDCClusterizationProcessor_mod::TVDCClusterizationProcessor_mod()
+  TVDCClusterizationSizeSelectableProcessor::TVDCClusterizationSizeSelectableProcessor()
 : fClusterOut(NULL), fNPlane(kInvalidI), fNData(NULL), fConverterArray(NULL)
 {
 
@@ -46,24 +46,27 @@ ClassImp(art::TVDCClusterizationProcessor_mod);
 		fOutputName,TString("mwdc1"));
   RegisterProcessorParameter("plane type","0: x, 1: u, 2: v",
 		fPlaneType, 0);
+  RegisterProcessorParameter("ClustSize","cluster size",fClustSize,3);
   Register(fSearchTimeWidth("SearchTimeWidth","width of search time window for pre-clustering by timestamp",200));
-  //
-  //  RegisterOutputCollection("OutputCollection","output",
-  //		fOutputColName,TString("mwdc1_track"));
-  // const StringVec_t defConverterList(1,"dtdx");
-  //  RegisterProcessorParameter("ConverterList","dt2dx conversion parameter",
-  //		fConverterList,defConverterList);
-  // RegisterProcessorParameter("SortType","0: ID, 1: Timing, 2: Charge (Default), 3: DriftLength",
-  //		fSortTypeInput, (Int_t)kCharge);
-  //  RegisterProcessorParameter("MAXDL","max drift length",
-  //		fMAXDL, 10);
-  // RegisterProcessorParameter("SortOrder","0: ascending, 1: descending (Default)",
-  //		fSortOrderInput, 0);//(Int_t)kDESC);
-  // RegisterProcessorParameter("V1190","0: V1190, 1:3377",
-  //		fV1190, 0);//(Int_t)kDESC);
+
+  
+    //
+    //  RegisterOutputCollection("OutputCollection","output",
+    //		fOutputColName,TString("mwdc1_track"));
+    // const StringVec_t defConverterList(1,"dtdx");
+    //  RegisterProcessorParameter("ConverterList","dt2dx conversion parameter",
+    //		fConverterList,defConverterList);
+    // RegisterProcessorParameter("SortType","0: ID, 1: Timing, 2: Charge (Default), 3: DriftLength",
+    //		fSortTypeInput, (Int_t)kCharge);
+    //  RegisterProcessorParameter("MAXDL","max drift length",
+    //		fMAXDL, 10);
+    // RegisterProcessorParameter("SortOrder","0: ascending, 1: descending (Default)",
+    //		fSortOrderInput, 0);//(Int_t)kDESC);
+    // RegisterProcessorParameter("V1190","0: V1190, 1:3377",
+    //		fV1190, 0);//(Int_t)kDESC);
 }
 
-TVDCClusterizationProcessor_mod::~TVDCClusterizationProcessor_mod()
+TVDCClusterizationSizeSelectableProcessor::~TVDCClusterizationSizeSelectableProcessor()
 {
   //  delete fConverterArray;
   //  if(fPlaneOut) {
@@ -77,7 +80,7 @@ TVDCClusterizationProcessor_mod::~TVDCClusterizationProcessor_mod()
   //  delete [] fNData;
 }
 
-void TVDCClusterizationProcessor_mod::Init(TEventCollection *col)
+void TVDCClusterizationSizeSelectableProcessor::Init(TEventCollection *col)
 {
   fClusterOut = new TClonesArray(TVDCCluster::Class(),1);
   fClusterOut->SetName(fOutputName);
@@ -85,7 +88,7 @@ void TVDCClusterizationProcessor_mod::Init(TEventCollection *col)
   col->Add(fOutputName,fClusterOut,fOutputIsTransparent);
 }
 
-void TVDCClusterizationProcessor_mod::Process()
+void TVDCClusterizationSizeSelectableProcessor::Process()
 {
   int debug = 0;
   if (fVerboseLevel > 2)  printf("newevent---------------------------\n");
@@ -257,12 +260,13 @@ double linearFit(const std::vector<double>& x, const std::vector<double>& y, dou
     return chi2;
 }
 
-void TVDCClusterizationProcessor_mod::ProcessCluster(std::vector<std::vector<TMWDCHitData*>> wires)
+void TVDCClusterizationSizeSelectableProcessor::ProcessCluster(std::vector<std::vector<TMWDCHitData*>> wires)
 {
    int nComb = 1;
    int nWrs  = wires.size();
    //if (nWrs < 3) return;
-   if (nWrs < 2) return;
+   //if (nWrs < 2) return;
+   if (nWrs < fClustSize) return;
    std::vector<std::vector<TMWDCHitData*>> comb(1,std::vector<TMWDCHitData*>());
    for (int iWrs = 0; iWrs < nWrs; ++iWrs) {
       int nHits = wires[iWrs].size();

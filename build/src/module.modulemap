@@ -1,6 +1,6 @@
 module "e559" {
   requires cplusplus
-  module "TVDCClusterizationProcessor_mod.h" { header "TVDCClusterizationProcessor_mod.h" export * }
+  module "TVDCClusterizationSizeSelectableProcessor.h" { header "TVDCClusterizationSizeSelectableProcessor.h" export * }
   module "TVDCTrackingProcessor_mod.h" { header "TVDCTrackingProcessor_mod.h" export * }
   module "TTimingChargeMultiHitMappingProcessor.h" { header "TTimingChargeMultiHitMappingProcessor.h" export * }
   module "TTimeTrefValidator.h" { header "TTimeTrefValidator.h" export * }

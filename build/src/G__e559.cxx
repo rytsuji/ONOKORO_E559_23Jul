@@ -35,7 +35,7 @@
 #include "TDataMember.h"
 
 // Header files passed as explicit arguments
-#include "TVDCClusterizationProcessor_mod.h"
+#include "TVDCClusterizationSizeSelectableProcessor.h"
 #include "TVDCTrackingProcessor_mod.h"
 #include "TTimingChargeMultiHitMappingProcessor.h"
 #include "TTimeTrefValidator.h"
@@ -46,35 +46,35 @@
 namespace std {} using namespace std;
 
 namespace ROOT {
-   static void *new_artcLcLTVDCClusterizationProcessor_mod(void *p = nullptr);
-   static void *newArray_artcLcLTVDCClusterizationProcessor_mod(Long_t size, void *p);
-   static void delete_artcLcLTVDCClusterizationProcessor_mod(void *p);
-   static void deleteArray_artcLcLTVDCClusterizationProcessor_mod(void *p);
-   static void destruct_artcLcLTVDCClusterizationProcessor_mod(void *p);
+   static void *new_artcLcLTVDCClusterizationSizeSelectableProcessor(void *p = nullptr);
+   static void *newArray_artcLcLTVDCClusterizationSizeSelectableProcessor(Long_t size, void *p);
+   static void delete_artcLcLTVDCClusterizationSizeSelectableProcessor(void *p);
+   static void deleteArray_artcLcLTVDCClusterizationSizeSelectableProcessor(void *p);
+   static void destruct_artcLcLTVDCClusterizationSizeSelectableProcessor(void *p);
 
    // Function generating the singleton type initializer
-   static TGenericClassInfo *GenerateInitInstanceLocal(const ::art::TVDCClusterizationProcessor_mod*)
+   static TGenericClassInfo *GenerateInitInstanceLocal(const ::art::TVDCClusterizationSizeSelectableProcessor*)
    {
-      ::art::TVDCClusterizationProcessor_mod *ptr = nullptr;
-      static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::art::TVDCClusterizationProcessor_mod >(nullptr);
+      ::art::TVDCClusterizationSizeSelectableProcessor *ptr = nullptr;
+      static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::art::TVDCClusterizationSizeSelectableProcessor >(nullptr);
       static ::ROOT::TGenericClassInfo 
-         instance("art::TVDCClusterizationProcessor_mod", ::art::TVDCClusterizationProcessor_mod::Class_Version(), "TVDCClusterizationProcessor_mod.h", 24,
-                  typeid(::art::TVDCClusterizationProcessor_mod), ::ROOT::Internal::DefineBehavior(ptr, ptr),
-                  &::art::TVDCClusterizationProcessor_mod::Dictionary, isa_proxy, 4,
-                  sizeof(::art::TVDCClusterizationProcessor_mod) );
-      instance.SetNew(&new_artcLcLTVDCClusterizationProcessor_mod);
-      instance.SetNewArray(&newArray_artcLcLTVDCClusterizationProcessor_mod);
-      instance.SetDelete(&delete_artcLcLTVDCClusterizationProcessor_mod);
-      instance.SetDeleteArray(&deleteArray_artcLcLTVDCClusterizationProcessor_mod);
-      instance.SetDestructor(&destruct_artcLcLTVDCClusterizationProcessor_mod);
+         instance("art::TVDCClusterizationSizeSelectableProcessor", ::art::TVDCClusterizationSizeSelectableProcessor::Class_Version(), "TVDCClusterizationSizeSelectableProcessor.h", 24,
+                  typeid(::art::TVDCClusterizationSizeSelectableProcessor), ::ROOT::Internal::DefineBehavior(ptr, ptr),
+                  &::art::TVDCClusterizationSizeSelectableProcessor::Dictionary, isa_proxy, 4,
+                  sizeof(::art::TVDCClusterizationSizeSelectableProcessor) );
+      instance.SetNew(&new_artcLcLTVDCClusterizationSizeSelectableProcessor);
+      instance.SetNewArray(&newArray_artcLcLTVDCClusterizationSizeSelectableProcessor);
+      instance.SetDelete(&delete_artcLcLTVDCClusterizationSizeSelectableProcessor);
+      instance.SetDeleteArray(&deleteArray_artcLcLTVDCClusterizationSizeSelectableProcessor);
+      instance.SetDestructor(&destruct_artcLcLTVDCClusterizationSizeSelectableProcessor);
       return &instance;
    }
-   TGenericClassInfo *GenerateInitInstance(const ::art::TVDCClusterizationProcessor_mod*)
+   TGenericClassInfo *GenerateInitInstance(const ::art::TVDCClusterizationSizeSelectableProcessor*)
    {
-      return GenerateInitInstanceLocal((::art::TVDCClusterizationProcessor_mod*)nullptr);
+      return GenerateInitInstanceLocal((::art::TVDCClusterizationSizeSelectableProcessor*)nullptr);
    }
    // Static variable to force the class initialization
-   static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const ::art::TVDCClusterizationProcessor_mod*)nullptr); R__UseDummy(_R__UNIQUE_DICT_(Init));
+   static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const ::art::TVDCClusterizationSizeSelectableProcessor*)nullptr); R__UseDummy(_R__UNIQUE_DICT_(Init));
 } // end of namespace ROOT
 
 namespace ROOT {
@@ -175,37 +175,37 @@ namespace ROOT {
 
 namespace art {
 //______________________________________________________________________________
-atomic_TClass_ptr TVDCClusterizationProcessor_mod::fgIsA(nullptr);  // static to hold class pointer
+atomic_TClass_ptr TVDCClusterizationSizeSelectableProcessor::fgIsA(nullptr);  // static to hold class pointer
 
 //______________________________________________________________________________
-const char *TVDCClusterizationProcessor_mod::Class_Name()
+const char *TVDCClusterizationSizeSelectableProcessor::Class_Name()
 {
-   return "art::TVDCClusterizationProcessor_mod";
+   return "art::TVDCClusterizationSizeSelectableProcessor";
 }
 
 //______________________________________________________________________________
-const char *TVDCClusterizationProcessor_mod::ImplFileName()
+const char *TVDCClusterizationSizeSelectableProcessor::ImplFileName()
 {
-   return ::ROOT::GenerateInitInstanceLocal((const ::art::TVDCClusterizationProcessor_mod*)nullptr)->GetImplFileName();
+   return ::ROOT::GenerateInitInstanceLocal((const ::art::TVDCClusterizationSizeSelectableProcessor*)nullptr)->GetImplFileName();
 }
 
 //______________________________________________________________________________
-int TVDCClusterizationProcessor_mod::ImplFileLine()
+int TVDCClusterizationSizeSelectableProcessor::ImplFileLine()
 {
-   return ::ROOT::GenerateInitInstanceLocal((const ::art::TVDCClusterizationProcessor_mod*)nullptr)->GetImplFileLine();
+   return ::ROOT::GenerateInitInstanceLocal((const ::art::TVDCClusterizationSizeSelectableProcessor*)nullptr)->GetImplFileLine();
 }
 
 //______________________________________________________________________________
-TClass *TVDCClusterizationProcessor_mod::Dictionary()
+TClass *TVDCClusterizationSizeSelectableProcessor::Dictionary()
 {
-   fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::art::TVDCClusterizationProcessor_mod*)nullptr)->GetClass();
+   fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::art::TVDCClusterizationSizeSelectableProcessor*)nullptr)->GetClass();
    return fgIsA;
 }
 
 //______________________________________________________________________________
-TClass *TVDCClusterizationProcessor_mod::Class()
+TClass *TVDCClusterizationSizeSelectableProcessor::Class()
 {
-   if (!fgIsA.load()) { R__LOCKGUARD(gInterpreterMutex); fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::art::TVDCClusterizationProcessor_mod*)nullptr)->GetClass(); }
+   if (!fgIsA.load()) { R__LOCKGUARD(gInterpreterMutex); fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::art::TVDCClusterizationSizeSelectableProcessor*)nullptr)->GetClass(); }
    return fgIsA;
 }
 
@@ -323,38 +323,38 @@ TClass *TTimeTrefValidator::Class()
 } // namespace art
 namespace art {
 //______________________________________________________________________________
-void TVDCClusterizationProcessor_mod::Streamer(TBuffer &R__b)
+void TVDCClusterizationSizeSelectableProcessor::Streamer(TBuffer &R__b)
 {
-   // Stream an object of class art::TVDCClusterizationProcessor_mod.
+   // Stream an object of class art::TVDCClusterizationSizeSelectableProcessor.
 
    if (R__b.IsReading()) {
-      R__b.ReadClassBuffer(art::TVDCClusterizationProcessor_mod::Class(),this);
+      R__b.ReadClassBuffer(art::TVDCClusterizationSizeSelectableProcessor::Class(),this);
    } else {
-      R__b.WriteClassBuffer(art::TVDCClusterizationProcessor_mod::Class(),this);
+      R__b.WriteClassBuffer(art::TVDCClusterizationSizeSelectableProcessor::Class(),this);
    }
 }
 
 } // namespace art
 namespace ROOT {
    // Wrappers around operator new
-   static void *new_artcLcLTVDCClusterizationProcessor_mod(void *p) {
-      return  p ? new(p) ::art::TVDCClusterizationProcessor_mod : new ::art::TVDCClusterizationProcessor_mod;
+   static void *new_artcLcLTVDCClusterizationSizeSelectableProcessor(void *p) {
+      return  p ? new(p) ::art::TVDCClusterizationSizeSelectableProcessor : new ::art::TVDCClusterizationSizeSelectableProcessor;
    }
-   static void *newArray_artcLcLTVDCClusterizationProcessor_mod(Long_t nElements, void *p) {
-      return p ? new(p) ::art::TVDCClusterizationProcessor_mod[nElements] : new ::art::TVDCClusterizationProcessor_mod[nElements];
+   static void *newArray_artcLcLTVDCClusterizationSizeSelectableProcessor(Long_t nElements, void *p) {
+      return p ? new(p) ::art::TVDCClusterizationSizeSelectableProcessor[nElements] : new ::art::TVDCClusterizationSizeSelectableProcessor[nElements];
    }
    // Wrapper around operator delete
-   static void delete_artcLcLTVDCClusterizationProcessor_mod(void *p) {
-      delete ((::art::TVDCClusterizationProcessor_mod*)p);
+   static void delete_artcLcLTVDCClusterizationSizeSelectableProcessor(void *p) {
+      delete ((::art::TVDCClusterizationSizeSelectableProcessor*)p);
    }
-   static void deleteArray_artcLcLTVDCClusterizationProcessor_mod(void *p) {
-      delete [] ((::art::TVDCClusterizationProcessor_mod*)p);
+   static void deleteArray_artcLcLTVDCClusterizationSizeSelectableProcessor(void *p) {
+      delete [] ((::art::TVDCClusterizationSizeSelectableProcessor*)p);
    }
-   static void destruct_artcLcLTVDCClusterizationProcessor_mod(void *p) {
-      typedef ::art::TVDCClusterizationProcessor_mod current_t;
+   static void destruct_artcLcLTVDCClusterizationSizeSelectableProcessor(void *p) {
+      typedef ::art::TVDCClusterizationSizeSelectableProcessor current_t;
       ((current_t*)p)->~current_t();
    }
-} // end of namespace ROOT for class ::art::TVDCClusterizationProcessor_mod
+} // end of namespace ROOT for class ::art::TVDCClusterizationSizeSelectableProcessor
 
 namespace art {
 //______________________________________________________________________________
@@ -529,7 +529,7 @@ namespace ROOT {
 namespace {
   void TriggerDictionaryInitialization_libe559_Impl() {
     static const char* headers[] = {
-"TVDCClusterizationProcessor_mod.h",
+"TVDCClusterizationSizeSelectableProcessor.h",
 "TVDCTrackingProcessor_mod.h",
 "TTimingChargeMultiHitMappingProcessor.h",
 "TTimeTrefValidator.h",
@@ -553,7 +553,7 @@ nullptr
 #pragma clang diagnostic ignored "-Wignored-attributes"
 #pragma clang diagnostic ignored "-Wreturn-type-c-linkage"
 extern int __Cling_AutoLoading_Map;
-namespace art{class __attribute__((annotate(R"ATTRDUMP(processor for MWDC plane division)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$TVDCClusterizationProcessor_mod.h")))  TVDCClusterizationProcessor_mod;}
+namespace art{class __attribute__((annotate(R"ATTRDUMP(processor for MWDC plane division)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$TVDCClusterizationSizeSelectableProcessor.h")))  TVDCClusterizationSizeSelectableProcessor;}
 namespace art{class __attribute__((annotate(R"ATTRDUMP(vdc tracking processor)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$TVDCTrackingProcessor_mod.h")))  TVDCTrackingProcessor_mod;}
 namespace art{class __attribute__((annotate(R"ATTRDUMP(processor for mapping timine and charge data for multi hit data)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$TTimingChargeMultiHitMappingProcessor.h")))  TTimingChargeMultiHitMappingProcessor;}
 namespace art{class __attribute__((annotate(R"ATTRDUMP(validate time in certain window)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$TTimeTrefValidator.h")))  TTimeTrefValidator;}
@@ -564,7 +564,7 @@ namespace art{class __attribute__((annotate(R"ATTRDUMP(validate time in certain 
 
 #define _BACKWARD_BACKWARD_WARNING_H
 // Inline headers
-#include "TVDCClusterizationProcessor_mod.h"
+#include "TVDCClusterizationSizeSelectableProcessor.h"
 #include "TVDCTrackingProcessor_mod.h"
 #include "TTimingChargeMultiHitMappingProcessor.h"
 #include "TTimeTrefValidator.h"
@@ -574,7 +574,7 @@ namespace art{class __attribute__((annotate(R"ATTRDUMP(validate time in certain 
     static const char* classesHeaders[] = {
 "art::TTimeTrefValidator", payloadCode, "@",
 "art::TTimingChargeMultiHitMappingProcessor", payloadCode, "@",
-"art::TVDCClusterizationProcessor_mod", payloadCode, "@",
+"art::TVDCClusterizationSizeSelectableProcessor", payloadCode, "@",
 "art::TVDCTrackingProcessor_mod", payloadCode, "@",
 nullptr
 };

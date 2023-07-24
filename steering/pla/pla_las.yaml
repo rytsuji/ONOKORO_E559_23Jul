@@ -4,10 +4,35 @@
 
 Processor:
   - include:
-      name: pla_las.tmpl.yaml
+      name: pla_las_multi.tmpl.yaml
       replace:
         CATID: 22
         VMEFERA: vme
+        TVALMIN1L: 0
+        TVALMAX1L: 0
+        TVALMIN1R: 0
+        TVALMAX1R: 0
+        TVALMIN2L: 0
+        TVALMAX2L: 0
+        TVALMIN2R: 0
+        TVALMAX2R: 0
+        TVALMIN3L: 115
+        TVALMAX3L: 155
+        TVALMIN3R: 135
+        TVALMAX3R: 175
+        TVALMIN4L: 110
+        TVALMAX4L: 150
+        TVALMIN4R: 125
+        TVALMAX4R: 175		
+        TVALMIN5L: 110
+        TVALMAX5L: 150
+        TVALMIN5R: 135
+        TVALMAX5R: 175
+        TVALMIN6L: 120
+        TVALMAX6L: 160
+        TVALMIN6R: 140
+        TVALMAX6R: 180		
+
   - include:
       name: pla_las.tmpl.yaml
       replace:

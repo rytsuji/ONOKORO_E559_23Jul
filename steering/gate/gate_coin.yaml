@@ -1,3 +1,4 @@
+Processor:
   - name: gate_array_init
     type: art::TGateArrayInitializer
     parameter:

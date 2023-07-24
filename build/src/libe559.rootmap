@@ -5,9 +5,9 @@ namespace art {  }
 # List of selected classes
 class art::TTimeTrefValidator
 class art::TTimingChargeMultiHitMappingProcessor
-class art::TVDCClusterizationProcessor_mod
+class art::TVDCClusterizationSizeSelectableProcessor
 class art::TVDCTrackingProcessor_mod
 header TTimeTrefValidator.h
 header TTimingChargeMultiHitMappingProcessor.h
-header TVDCClusterizationProcessor_mod.h
+header TVDCClusterizationSizeSelectableProcessor.h
 header TVDCTrackingProcessor_mod.h

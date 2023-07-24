@@ -261,29 +261,29 @@ TTimingChargeMultiHitMappingProcessor.cc.s:
 	cd /home/tsuji/work/art_analysis/e559_23jul/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/e559.dir/build.make src/CMakeFiles/e559.dir/TTimingChargeMultiHitMappingProcessor.cc.s
 .PHONY : TTimingChargeMultiHitMappingProcessor.cc.s
 
-TVDCClusterizationProcessor_mod.o: TVDCClusterizationProcessor_mod.cc.o
-.PHONY : TVDCClusterizationProcessor_mod.o
+TVDCClusterizationSizeSelectableProcessor.o: TVDCClusterizationSizeSelectableProcessor.cc.o
+.PHONY : TVDCClusterizationSizeSelectableProcessor.o
 
 # target to build an object file
-TVDCClusterizationProcessor_mod.cc.o:
-	cd /home/tsuji/work/art_analysis/e559_23jul/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/e559.dir/build.make src/CMakeFiles/e559.dir/TVDCClusterizationProcessor_mod.cc.o
-.PHONY : TVDCClusterizationProcessor_mod.cc.o
+TVDCClusterizationSizeSelectableProcessor.cc.o:
+	cd /home/tsuji/work/art_analysis/e559_23jul/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/e559.dir/build.make src/CMakeFiles/e559.dir/TVDCClusterizationSizeSelectableProcessor.cc.o
+.PHONY : TVDCClusterizationSizeSelectableProcessor.cc.o
 
-TVDCClusterizationProcessor_mod.i: TVDCClusterizationProcessor_mod.cc.i
-.PHONY : TVDCClusterizationProcessor_mod.i
+TVDCClusterizationSizeSelectableProcessor.i: TVDCClusterizationSizeSelectableProcessor.cc.i
+.PHONY : TVDCClusterizationSizeSelectableProcessor.i
 
 # target to preprocess a source file
-TVDCClusterizationProcessor_mod.cc.i:
-	cd /home/tsuji/work/art_analysis/e559_23jul/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/e559.dir/build.make src/CMakeFiles/e559.dir/TVDCClusterizationProcessor_mod.cc.i
-.PHONY : TVDCClusterizationProcessor_mod.cc.i
+TVDCClusterizationSizeSelectableProcessor.cc.i:
+	cd /home/tsuji/work/art_analysis/e559_23jul/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/e559.dir/build.make src/CMakeFiles/e559.dir/TVDCClusterizationSizeSelectableProcessor.cc.i
+.PHONY : TVDCClusterizationSizeSelectableProcessor.cc.i
 
-TVDCClusterizationProcessor_mod.s: TVDCClusterizationProcessor_mod.cc.s
-.PHONY : TVDCClusterizationProcessor_mod.s
+TVDCClusterizationSizeSelectableProcessor.s: TVDCClusterizationSizeSelectableProcessor.cc.s
+.PHONY : TVDCClusterizationSizeSelectableProcessor.s
 
 # target to generate assembly for a file
-TVDCClusterizationProcessor_mod.cc.s:
-	cd /home/tsuji/work/art_analysis/e559_23jul/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/e559.dir/build.make src/CMakeFiles/e559.dir/TVDCClusterizationProcessor_mod.cc.s
-.PHONY : TVDCClusterizationProcessor_mod.cc.s
+TVDCClusterizationSizeSelectableProcessor.cc.s:
+	cd /home/tsuji/work/art_analysis/e559_23jul/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/e559.dir/build.make src/CMakeFiles/e559.dir/TVDCClusterizationSizeSelectableProcessor.cc.s
+.PHONY : TVDCClusterizationSizeSelectableProcessor.cc.s
 
 TVDCTrackingProcessor_mod.o: TVDCTrackingProcessor_mod.cc.o
 .PHONY : TVDCTrackingProcessor_mod.o
@@ -332,9 +332,9 @@ help:
 	@echo "... TTimingChargeMultiHitMappingProcessor.o"
 	@echo "... TTimingChargeMultiHitMappingProcessor.i"
 	@echo "... TTimingChargeMultiHitMappingProcessor.s"
-	@echo "... TVDCClusterizationProcessor_mod.o"
-	@echo "... TVDCClusterizationProcessor_mod.i"
-	@echo "... TVDCClusterizationProcessor_mod.s"
+	@echo "... TVDCClusterizationSizeSelectableProcessor.o"
+	@echo "... TVDCClusterizationSizeSelectableProcessor.i"
+	@echo "... TVDCClusterizationSizeSelectableProcessor.s"
 	@echo "... TVDCTrackingProcessor_mod.o"
 	@echo "... TVDCTrackingProcessor_mod.i"
 	@echo "... TVDCTrackingProcessor_mod.s"

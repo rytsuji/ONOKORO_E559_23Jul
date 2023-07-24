@@ -69,19 +69,19 @@ include src/CMakeFiles/e559.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/CMakeFiles/e559.dir/flags.make
 
-src/CMakeFiles/e559.dir/TVDCClusterizationProcessor_mod.cc.o: src/CMakeFiles/e559.dir/flags.make
-src/CMakeFiles/e559.dir/TVDCClusterizationProcessor_mod.cc.o: ../src/TVDCClusterizationProcessor_mod.cc
-src/CMakeFiles/e559.dir/TVDCClusterizationProcessor_mod.cc.o: src/CMakeFiles/e559.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tsuji/work/art_analysis/e559_23jul/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/e559.dir/TVDCClusterizationProcessor_mod.cc.o"
-	cd /home/tsuji/work/art_analysis/e559_23jul/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/e559.dir/TVDCClusterizationProcessor_mod.cc.o -MF CMakeFiles/e559.dir/TVDCClusterizationProcessor_mod.cc.o.d -o CMakeFiles/e559.dir/TVDCClusterizationProcessor_mod.cc.o -c /home/tsuji/work/art_analysis/e559_23jul/src/TVDCClusterizationProcessor_mod.cc
+src/CMakeFiles/e559.dir/TVDCClusterizationSizeSelectableProcessor.cc.o: src/CMakeFiles/e559.dir/flags.make
+src/CMakeFiles/e559.dir/TVDCClusterizationSizeSelectableProcessor.cc.o: ../src/TVDCClusterizationSizeSelectableProcessor.cc
+src/CMakeFiles/e559.dir/TVDCClusterizationSizeSelectableProcessor.cc.o: src/CMakeFiles/e559.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tsuji/work/art_analysis/e559_23jul/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/e559.dir/TVDCClusterizationSizeSelectableProcessor.cc.o"
+	cd /home/tsuji/work/art_analysis/e559_23jul/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/e559.dir/TVDCClusterizationSizeSelectableProcessor.cc.o -MF CMakeFiles/e559.dir/TVDCClusterizationSizeSelectableProcessor.cc.o.d -o CMakeFiles/e559.dir/TVDCClusterizationSizeSelectableProcessor.cc.o -c /home/tsuji/work/art_analysis/e559_23jul/src/TVDCClusterizationSizeSelectableProcessor.cc
 
-src/CMakeFiles/e559.dir/TVDCClusterizationProcessor_mod.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/e559.dir/TVDCClusterizationProcessor_mod.cc.i"
-	cd /home/tsuji/work/art_analysis/e559_23jul/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tsuji/work/art_analysis/e559_23jul/src/TVDCClusterizationProcessor_mod.cc > CMakeFiles/e559.dir/TVDCClusterizationProcessor_mod.cc.i
+src/CMakeFiles/e559.dir/TVDCClusterizationSizeSelectableProcessor.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/e559.dir/TVDCClusterizationSizeSelectableProcessor.cc.i"
+	cd /home/tsuji/work/art_analysis/e559_23jul/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tsuji/work/art_analysis/e559_23jul/src/TVDCClusterizationSizeSelectableProcessor.cc > CMakeFiles/e559.dir/TVDCClusterizationSizeSelectableProcessor.cc.i
 
-src/CMakeFiles/e559.dir/TVDCClusterizationProcessor_mod.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/e559.dir/TVDCClusterizationProcessor_mod.cc.s"
-	cd /home/tsuji/work/art_analysis/e559_23jul/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tsuji/work/art_analysis/e559_23jul/src/TVDCClusterizationProcessor_mod.cc -o CMakeFiles/e559.dir/TVDCClusterizationProcessor_mod.cc.s
+src/CMakeFiles/e559.dir/TVDCClusterizationSizeSelectableProcessor.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/e559.dir/TVDCClusterizationSizeSelectableProcessor.cc.s"
+	cd /home/tsuji/work/art_analysis/e559_23jul/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tsuji/work/art_analysis/e559_23jul/src/TVDCClusterizationSizeSelectableProcessor.cc -o CMakeFiles/e559.dir/TVDCClusterizationSizeSelectableProcessor.cc.s
 
 src/CMakeFiles/e559.dir/TVDCTrackingProcessor_mod.cc.o: src/CMakeFiles/e559.dir/flags.make
 src/CMakeFiles/e559.dir/TVDCTrackingProcessor_mod.cc.o: ../src/TVDCTrackingProcessor_mod.cc
@@ -127,7 +127,7 @@ src/CMakeFiles/e559.dir/TTimeTrefValidator.cc.s: cmake_force
 
 # Object files for target e559
 e559_OBJECTS = \
-"CMakeFiles/e559.dir/TVDCClusterizationProcessor_mod.cc.o" \
+"CMakeFiles/e559.dir/TVDCClusterizationSizeSelectableProcessor.cc.o" \
 "CMakeFiles/e559.dir/TVDCTrackingProcessor_mod.cc.o" \
 "CMakeFiles/e559.dir/TTimingChargeMultiHitMappingProcessor.cc.o" \
 "CMakeFiles/e559.dir/TTimeTrefValidator.cc.o"
@@ -136,7 +136,7 @@ e559_OBJECTS = \
 e559_EXTERNAL_OBJECTS = \
 "/home/tsuji/work/art_analysis/e559_23jul/build/src/CMakeFiles/G__e559.dir/G__e559.cxx.o"
 
-src/libe559.so: src/CMakeFiles/e559.dir/TVDCClusterizationProcessor_mod.cc.o
+src/libe559.so: src/CMakeFiles/e559.dir/TVDCClusterizationSizeSelectableProcessor.cc.o
 src/libe559.so: src/CMakeFiles/e559.dir/TVDCTrackingProcessor_mod.cc.o
 src/libe559.so: src/CMakeFiles/e559.dir/TTimingChargeMultiHitMappingProcessor.cc.o
 src/libe559.so: src/CMakeFiles/e559.dir/TTimeTrefValidator.cc.o

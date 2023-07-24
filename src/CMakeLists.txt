@@ -2,7 +2,7 @@ set(LIB_NAME e559)
 
 set(SOURCES
   # add your source files
-  TVDCClusterizationProcessor_mod.cc
+  TVDCClusterizationSizeSelectableProcessor.cc
   TVDCTrackingProcessor_mod.cc
   TTimingChargeMultiHitMappingProcessor.cc
   TTimeTrefValidator.cc
@@ -10,7 +10,7 @@ set(SOURCES
 
 set(HEADERS
   # add your source files
-  TVDCClusterizationProcessor_mod.h
+  TVDCClusterizationSizeSelectableProcessor.h
   TVDCTrackingProcessor_mod.h
   TTimingChargeMultiHitMappingProcessor.h
   TTimeTrefValidator.h
