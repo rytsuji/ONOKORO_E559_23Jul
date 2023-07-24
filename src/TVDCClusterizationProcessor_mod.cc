@@ -261,8 +261,8 @@ void TVDCClusterizationProcessor_mod::ProcessCluster(std::vector<std::vector<TMW
 {
    int nComb = 1;
    int nWrs  = wires.size();
-   //   if (nWrs < 3) return;
-   if (nWrs < 2) return; //mod   
+   //if (nWrs < 3) return;
+   if (nWrs < 2) return;
    std::vector<std::vector<TMWDCHitData*>> comb(1,std::vector<TMWDCHitData*>());
    for (int iWrs = 0; iWrs < nWrs; ++iWrs) {
       int nHits = wires[iWrs].size();
@@ -314,9 +314,9 @@ void TVDCClusterizationProcessor_mod::ProcessCluster(std::vector<std::vector<TMW
             bestOffset = offset;
             bestSlope = slope;
             for (int iwrs = 0; iwrs < nWrs; ++iwrs) {
-               bestDL[iwrs] = dl[iwrs];
-               bestID[iwrs] = id[iwrs];
-               bestT[iwrs] = ts[iwrs];
+	      bestDL[iwrs] = dl[iwrs];
+	      bestID[iwrs] = id[iwrs];
+	      bestT[iwrs] = ts[iwrs];
             }
 //            std::copy(dl.begin(),dl.end(),bestDL.begin());
 //            std::copy(id.begin(),id.end(),bestID.begin());

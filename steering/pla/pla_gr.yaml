@@ -8,11 +8,19 @@ Processor:
       replace:
         CATID: 21
         VMEFERA: vme
-  - include:
-      name: pla_gr.tmpl.yaml
-      replace:
-        CATID: 11
-        VMEFERA: fera
+        TVALMIN1L: -154
+        TVALMAX1L: -145
+        TVALMIN1R: -156
+        TVALMAX1R: -146
+        TVALMIN2L: -162
+        TVALMAX2L: -148
+        TVALMIN2R: -161
+        TVALMAX2R: -149		
+#  - include:
+#      name: pla_gr.tmpl.yaml
+#      replace:
+#        CATID: 11
+#        VMEFERA: fera
       
       
 

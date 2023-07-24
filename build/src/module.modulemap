@@ -3,6 +3,7 @@ module "e559" {
   module "TVDCClusterizationProcessor_mod.h" { header "TVDCClusterizationProcessor_mod.h" export * }
   module "TVDCTrackingProcessor_mod.h" { header "TVDCTrackingProcessor_mod.h" export * }
   module "TTimingChargeMultiHitMappingProcessor.h" { header "TTimingChargeMultiHitMappingProcessor.h" export * }
+  module "TTimeTrefValidator.h" { header "TTimeTrefValidator.h" export * }
   link "libe559.so"
   export *
 }

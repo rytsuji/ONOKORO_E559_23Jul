@@ -5,6 +5,7 @@ set(SOURCES
   TVDCClusterizationProcessor_mod.cc
   TVDCTrackingProcessor_mod.cc
   TTimingChargeMultiHitMappingProcessor.cc
+  TTimeTrefValidator.cc
 )
 
 set(HEADERS
@@ -12,6 +13,7 @@ set(HEADERS
   TVDCClusterizationProcessor_mod.h
   TVDCTrackingProcessor_mod.h
   TTimingChargeMultiHitMappingProcessor.h
+  TTimeTrefValidator.h
 )
 
 add_library(${LIB_NAME} SHARED ${SOURCES})

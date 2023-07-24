@@ -33,7 +33,9 @@ public:
 
 protected:
    Parameter<Double_t> fSearchTimeWidth;
+   Parameter<Double_t> fTiltedAngleX; // unit of deg  
    Parameter<Double_t> fTiltedAngleY; // unit of deg
+   Parameter<Double_t> fTiltedAngleZ; // unit of deg
 
    ClassDef(TVDCTrackingProcessor_mod,0) // vdc tracking processor
 };

@@ -157,31 +157,33 @@ Processor:
 
 # tracking
 
-  - name: proc_tracking_las
-    type: art::TVDCTrackingProcessor_las
-    parameter:
-      InputCollection:
-        - vdc_las_clust_x1
-        - vdc_las_clust_u1
-        - vdc_las_clust_v1
-        - vdc_las_clust_x2
-        - vdc_las_clust_u2
-        - vdc_las_clust_v2
-      InputCollection2:
-        - vdc_las_x1
-        - vdc_las_u1
-        - vdc_las_v1
-        - vdc_las_x2
-        - vdc_las_u2
-        - vdc_las_v2
-      OutputCollection: vdc_las
-      OutputTransparency: 0
+#  - name: proc_tracking_las
+#    type: art::TVDCTrackingProcessor_las
+#    parameter:
+#      InputCollection:
+#        - vdc_las_clust_x1
+#        - vdc_las_clust_u1
+#        - vdc_las_clust_v1
+#        - vdc_las_clust_x2
+#        - vdc_las_clust_u2
+#        - vdc_las_clust_v2
+#      InputCollection2:
+#        - vdc_las_x1
+#        - vdc_las_u1
+#        - vdc_las_v1
+#        - vdc_las_x2
+#        - vdc_las_u2
+#        - vdc_las_v2
+#      OutputCollection: vdc_las
+#      OutputTransparency: 0
+#
 
-
   - name: proc_tracking_las
-    type: art::TVDCTrackingProcessor_mod
+    type: art::TVDCTrackingProcessor
     parameter:
+#      TiltedAngleX: 0  # [Double_t] tilted angle of whole system along y axis in deg
       TiltedAngleY: -60  # [Double_t] tilted angle of whole system along y axis in deg
+#      TiltedAngleZ: 0  # [Double_t] tilted angle of whole system along y axis in deg      
     
       InputCollection:
         - vdc_las_clust_x1
@@ -192,7 +194,6 @@ Processor:
         - vdc_las_clust_v2
       OutputCollection: vdc_las_m
       OutputTransparency: 0
-
 
 # calibration processor
 

@@ -21,7 +21,7 @@
 #pragma link C++ class art::TVDCClusterizationProcessor_mod+;
 #pragma link C++ class art::TVDCTrackingProcessor_mod+;
 #pragma link C++ class art::TTimingChargeMultiHitMappingProcessor+;
-
+#pragma link C++ class art::TTimeTrefValidator+;
 
 #endif // __CINT__
 

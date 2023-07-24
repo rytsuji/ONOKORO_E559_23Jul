@@ -53,6 +53,7 @@ src/G__e559.cxx: \
  /home/quser/local/root/v6.26.10/include/snprintf.h \
  /home/quser/local/root/v6.26.10/include/strlcpy.h \
  /home/quser/local/root/v6.26.10/include/strtok.h \
+ ../src/TTimeTrefValidator.h \
  ../src/TTimingChargeMultiHitMappingProcessor.h \
  ../src/TVDCClusterizationProcessor_mod.h \
  ../src/TVDCTrackingProcessor_mod.h \

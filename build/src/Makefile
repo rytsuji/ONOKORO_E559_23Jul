@@ -213,6 +213,30 @@ G__e559.cxx.s:
 	cd /home/tsuji/work/art_analysis/e559_23jul/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/G__e559.dir/build.make src/CMakeFiles/G__e559.dir/G__e559.cxx.s
 .PHONY : G__e559.cxx.s
 
+TTimeTrefValidator.o: TTimeTrefValidator.cc.o
+.PHONY : TTimeTrefValidator.o
+
+# target to build an object file
+TTimeTrefValidator.cc.o:
+	cd /home/tsuji/work/art_analysis/e559_23jul/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/e559.dir/build.make src/CMakeFiles/e559.dir/TTimeTrefValidator.cc.o
+.PHONY : TTimeTrefValidator.cc.o
+
+TTimeTrefValidator.i: TTimeTrefValidator.cc.i
+.PHONY : TTimeTrefValidator.i
+
+# target to preprocess a source file
+TTimeTrefValidator.cc.i:
+	cd /home/tsuji/work/art_analysis/e559_23jul/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/e559.dir/build.make src/CMakeFiles/e559.dir/TTimeTrefValidator.cc.i
+.PHONY : TTimeTrefValidator.cc.i
+
+TTimeTrefValidator.s: TTimeTrefValidator.cc.s
+.PHONY : TTimeTrefValidator.s
+
+# target to generate assembly for a file
+TTimeTrefValidator.cc.s:
+	cd /home/tsuji/work/art_analysis/e559_23jul/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/e559.dir/build.make src/CMakeFiles/e559.dir/TTimeTrefValidator.cc.s
+.PHONY : TTimeTrefValidator.cc.s
+
 TTimingChargeMultiHitMappingProcessor.o: TTimingChargeMultiHitMappingProcessor.cc.o
 .PHONY : TTimingChargeMultiHitMappingProcessor.o
 
@@ -302,6 +326,9 @@ help:
 	@echo "... G__e559.o"
 	@echo "... G__e559.i"
 	@echo "... G__e559.s"
+	@echo "... TTimeTrefValidator.o"
+	@echo "... TTimeTrefValidator.i"
+	@echo "... TTimeTrefValidator.s"
 	@echo "... TTimingChargeMultiHitMappingProcessor.o"
 	@echo "... TTimingChargeMultiHitMappingProcessor.i"
 	@echo "... TTimingChargeMultiHitMappingProcessor.s"

@@ -4,7 +4,7 @@
 
 Processor:
   - name: proc_pla_gr_vme_raw
-    type: art::TTimingChargeMappingProcessor
+    type: art::TTimingChargeMappingMultiHitProcessor
     parameter:
       CatID:              21
       ChargeType:         1

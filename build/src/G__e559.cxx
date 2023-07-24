@@ -38,6 +38,7 @@
 #include "TVDCClusterizationProcessor_mod.h"
 #include "TVDCTrackingProcessor_mod.h"
 #include "TTimingChargeMultiHitMappingProcessor.h"
+#include "TTimeTrefValidator.h"
 
 // Header files passed via #pragma extra_include
 
@@ -138,6 +139,38 @@ namespace ROOT {
    }
    // Static variable to force the class initialization
    static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const ::art::TTimingChargeMultiHitMappingProcessor*)nullptr); R__UseDummy(_R__UNIQUE_DICT_(Init));
+} // end of namespace ROOT
+
+namespace ROOT {
+   static void *new_artcLcLTTimeTrefValidator(void *p = nullptr);
+   static void *newArray_artcLcLTTimeTrefValidator(Long_t size, void *p);
+   static void delete_artcLcLTTimeTrefValidator(void *p);
+   static void deleteArray_artcLcLTTimeTrefValidator(void *p);
+   static void destruct_artcLcLTTimeTrefValidator(void *p);
+
+   // Function generating the singleton type initializer
+   static TGenericClassInfo *GenerateInitInstanceLocal(const ::art::TTimeTrefValidator*)
+   {
+      ::art::TTimeTrefValidator *ptr = nullptr;
+      static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::art::TTimeTrefValidator >(nullptr);
+      static ::ROOT::TGenericClassInfo 
+         instance("art::TTimeTrefValidator", ::art::TTimeTrefValidator::Class_Version(), "TTimeTrefValidator.h", 23,
+                  typeid(::art::TTimeTrefValidator), ::ROOT::Internal::DefineBehavior(ptr, ptr),
+                  &::art::TTimeTrefValidator::Dictionary, isa_proxy, 4,
+                  sizeof(::art::TTimeTrefValidator) );
+      instance.SetNew(&new_artcLcLTTimeTrefValidator);
+      instance.SetNewArray(&newArray_artcLcLTTimeTrefValidator);
+      instance.SetDelete(&delete_artcLcLTTimeTrefValidator);
+      instance.SetDeleteArray(&deleteArray_artcLcLTTimeTrefValidator);
+      instance.SetDestructor(&destruct_artcLcLTTimeTrefValidator);
+      return &instance;
+   }
+   TGenericClassInfo *GenerateInitInstance(const ::art::TTimeTrefValidator*)
+   {
+      return GenerateInitInstanceLocal((::art::TTimeTrefValidator*)nullptr);
+   }
+   // Static variable to force the class initialization
+   static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const ::art::TTimeTrefValidator*)nullptr); R__UseDummy(_R__UNIQUE_DICT_(Init));
 } // end of namespace ROOT
 
 namespace art {
@@ -253,6 +286,43 @@ TClass *TTimingChargeMultiHitMappingProcessor::Class()
 } // namespace art
 namespace art {
 //______________________________________________________________________________
+atomic_TClass_ptr TTimeTrefValidator::fgIsA(nullptr);  // static to hold class pointer
+
+//______________________________________________________________________________
+const char *TTimeTrefValidator::Class_Name()
+{
+   return "art::TTimeTrefValidator";
+}
+
+//______________________________________________________________________________
+const char *TTimeTrefValidator::ImplFileName()
+{
+   return ::ROOT::GenerateInitInstanceLocal((const ::art::TTimeTrefValidator*)nullptr)->GetImplFileName();
+}
+
+//______________________________________________________________________________
+int TTimeTrefValidator::ImplFileLine()
+{
+   return ::ROOT::GenerateInitInstanceLocal((const ::art::TTimeTrefValidator*)nullptr)->GetImplFileLine();
+}
+
+//______________________________________________________________________________
+TClass *TTimeTrefValidator::Dictionary()
+{
+   fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::art::TTimeTrefValidator*)nullptr)->GetClass();
+   return fgIsA;
+}
+
+//______________________________________________________________________________
+TClass *TTimeTrefValidator::Class()
+{
+   if (!fgIsA.load()) { R__LOCKGUARD(gInterpreterMutex); fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::art::TTimeTrefValidator*)nullptr)->GetClass(); }
+   return fgIsA;
+}
+
+} // namespace art
+namespace art {
+//______________________________________________________________________________
 void TVDCClusterizationProcessor_mod::Streamer(TBuffer &R__b)
 {
    // Stream an object of class art::TVDCClusterizationProcessor_mod.
@@ -356,12 +426,113 @@ namespace ROOT {
    }
 } // end of namespace ROOT for class ::art::TTimingChargeMultiHitMappingProcessor
 
+namespace art {
+//______________________________________________________________________________
+void TTimeTrefValidator::Streamer(TBuffer &R__b)
+{
+   // Stream an object of class art::TTimeTrefValidator.
+
+   if (R__b.IsReading()) {
+      R__b.ReadClassBuffer(art::TTimeTrefValidator::Class(),this);
+   } else {
+      R__b.WriteClassBuffer(art::TTimeTrefValidator::Class(),this);
+   }
+}
+
+} // namespace art
+namespace ROOT {
+   // Wrappers around operator new
+   static void *new_artcLcLTTimeTrefValidator(void *p) {
+      return  p ? new(p) ::art::TTimeTrefValidator : new ::art::TTimeTrefValidator;
+   }
+   static void *newArray_artcLcLTTimeTrefValidator(Long_t nElements, void *p) {
+      return p ? new(p) ::art::TTimeTrefValidator[nElements] : new ::art::TTimeTrefValidator[nElements];
+   }
+   // Wrapper around operator delete
+   static void delete_artcLcLTTimeTrefValidator(void *p) {
+      delete ((::art::TTimeTrefValidator*)p);
+   }
+   static void deleteArray_artcLcLTTimeTrefValidator(void *p) {
+      delete [] ((::art::TTimeTrefValidator*)p);
+   }
+   static void destruct_artcLcLTTimeTrefValidator(void *p) {
+      typedef ::art::TTimeTrefValidator current_t;
+      ((current_t*)p)->~current_t();
+   }
+} // end of namespace ROOT for class ::art::TTimeTrefValidator
+
+namespace ROOT {
+   static TClass *vectorlEfloatgR_Dictionary();
+   static void vectorlEfloatgR_TClassManip(TClass*);
+   static void *new_vectorlEfloatgR(void *p = nullptr);
+   static void *newArray_vectorlEfloatgR(Long_t size, void *p);
+   static void delete_vectorlEfloatgR(void *p);
+   static void deleteArray_vectorlEfloatgR(void *p);
+   static void destruct_vectorlEfloatgR(void *p);
+
+   // Function generating the singleton type initializer
+   static TGenericClassInfo *GenerateInitInstanceLocal(const vector<float>*)
+   {
+      vector<float> *ptr = nullptr;
+      static ::TVirtualIsAProxy* isa_proxy = new ::TIsAProxy(typeid(vector<float>));
+      static ::ROOT::TGenericClassInfo 
+         instance("vector<float>", -2, "vector", 339,
+                  typeid(vector<float>), ::ROOT::Internal::DefineBehavior(ptr, ptr),
+                  &vectorlEfloatgR_Dictionary, isa_proxy, 0,
+                  sizeof(vector<float>) );
+      instance.SetNew(&new_vectorlEfloatgR);
+      instance.SetNewArray(&newArray_vectorlEfloatgR);
+      instance.SetDelete(&delete_vectorlEfloatgR);
+      instance.SetDeleteArray(&deleteArray_vectorlEfloatgR);
+      instance.SetDestructor(&destruct_vectorlEfloatgR);
+      instance.AdoptCollectionProxyInfo(TCollectionProxyInfo::Generate(TCollectionProxyInfo::Pushback< vector<float> >()));
+
+      ::ROOT::AddClassAlternate("vector<float>","std::vector<float, std::allocator<float> >");
+      return &instance;
+   }
+   // Static variable to force the class initialization
+   static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const vector<float>*)nullptr); R__UseDummy(_R__UNIQUE_DICT_(Init));
+
+   // Dictionary for non-ClassDef classes
+   static TClass *vectorlEfloatgR_Dictionary() {
+      TClass* theClass =::ROOT::GenerateInitInstanceLocal((const vector<float>*)nullptr)->GetClass();
+      vectorlEfloatgR_TClassManip(theClass);
+   return theClass;
+   }
+
+   static void vectorlEfloatgR_TClassManip(TClass* ){
+   }
+
+} // end of namespace ROOT
+
+namespace ROOT {
+   // Wrappers around operator new
+   static void *new_vectorlEfloatgR(void *p) {
+      return  p ? ::new((::ROOT::Internal::TOperatorNewHelper*)p) vector<float> : new vector<float>;
+   }
+   static void *newArray_vectorlEfloatgR(Long_t nElements, void *p) {
+      return p ? ::new((::ROOT::Internal::TOperatorNewHelper*)p) vector<float>[nElements] : new vector<float>[nElements];
+   }
+   // Wrapper around operator delete
+   static void delete_vectorlEfloatgR(void *p) {
+      delete ((vector<float>*)p);
+   }
+   static void deleteArray_vectorlEfloatgR(void *p) {
+      delete [] ((vector<float>*)p);
+   }
+   static void destruct_vectorlEfloatgR(void *p) {
+      typedef vector<float> current_t;
+      ((current_t*)p)->~current_t();
+   }
+} // end of namespace ROOT for class vector<float>
+
 namespace {
   void TriggerDictionaryInitialization_libe559_Impl() {
     static const char* headers[] = {
 "TVDCClusterizationProcessor_mod.h",
 "TVDCTrackingProcessor_mod.h",
 "TTimingChargeMultiHitMappingProcessor.h",
+"TTimeTrefValidator.h",
 nullptr
     };
     static const char* includePaths[] = {
@@ -385,6 +556,7 @@ extern int __Cling_AutoLoading_Map;
 namespace art{class __attribute__((annotate(R"ATTRDUMP(processor for MWDC plane division)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$TVDCClusterizationProcessor_mod.h")))  TVDCClusterizationProcessor_mod;}
 namespace art{class __attribute__((annotate(R"ATTRDUMP(vdc tracking processor)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$TVDCTrackingProcessor_mod.h")))  TVDCTrackingProcessor_mod;}
 namespace art{class __attribute__((annotate(R"ATTRDUMP(processor for mapping timine and charge data for multi hit data)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$TTimingChargeMultiHitMappingProcessor.h")))  TTimingChargeMultiHitMappingProcessor;}
+namespace art{class __attribute__((annotate(R"ATTRDUMP(validate time in certain window)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$TTimeTrefValidator.h")))  TTimeTrefValidator;}
 )DICTFWDDCLS";
     static const char* payloadCode = R"DICTPAYLOAD(
 #line 1 "libe559 dictionary payload"
@@ -395,10 +567,12 @@ namespace art{class __attribute__((annotate(R"ATTRDUMP(processor for mapping tim
 #include "TVDCClusterizationProcessor_mod.h"
 #include "TVDCTrackingProcessor_mod.h"
 #include "TTimingChargeMultiHitMappingProcessor.h"
+#include "TTimeTrefValidator.h"
 
 #undef  _BACKWARD_BACKWARD_WARNING_H
 )DICTPAYLOAD";
     static const char* classesHeaders[] = {
+"art::TTimeTrefValidator", payloadCode, "@",
 "art::TTimingChargeMultiHitMappingProcessor", payloadCode, "@",
 "art::TVDCClusterizationProcessor_mod", payloadCode, "@",
 "art::TVDCTrackingProcessor_mod", payloadCode, "@",

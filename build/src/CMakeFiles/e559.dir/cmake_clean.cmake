@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/e559.dir/TTimeTrefValidator.cc.o"
+  "CMakeFiles/e559.dir/TTimeTrefValidator.cc.o.d"
   "CMakeFiles/e559.dir/TTimingChargeMultiHitMappingProcessor.cc.o"
   "CMakeFiles/e559.dir/TTimingChargeMultiHitMappingProcessor.cc.o.d"
   "CMakeFiles/e559.dir/TVDCClusterizationProcessor_mod.cc.o"
