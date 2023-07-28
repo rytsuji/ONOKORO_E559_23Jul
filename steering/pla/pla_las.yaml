@@ -33,6 +33,12 @@ Processor:
         TVALMIN6R: 140
         TVALMAX6R: 180		
 
+# - include:
+#     name: pla_las.tmpl.yaml
+#     replace:
+#       CATID: 22
+#       VMEFERA: vme
+
   - include:
       name: pla_las.tmpl.yaml
       replace:

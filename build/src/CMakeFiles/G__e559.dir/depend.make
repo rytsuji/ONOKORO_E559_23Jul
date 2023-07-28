@@ -56,5 +56,5 @@ src/G__e559.cxx: \
  ../src/TTimeTrefValidator.h \
  ../src/TTimingChargeMultiHitMappingProcessor.h \
  ../src/TVDCClusterizationSizeSelectableProcessor.h \
- ../src/TVDCTrackingProcessor_mod.h \
+ ../src/TVDCTrackingXZRotatableProcessor.h \
  ../src/linkdef_user.h

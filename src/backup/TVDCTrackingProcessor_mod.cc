@@ -47,22 +47,8 @@ void art::TVDCTrackingProcessor_mod::Process()
   //   Info("Process","========== New Event ==========");
    fStopwatch->Start();
    fMWDCTrackOut->Clear("C");
-   /* modified by Ryotaro Tsuji*/   
-
    std::vector<std::vector<TVDCCluster*>> planeSets;
 
-
-   //int nHit_max=0;
-
-   //for (int iPlane = 0; iPlane < fNPlane; ++iPlane) {
-   //TClonesArray* plane = *(fPlaneIn->at(iPlane));
-   //int nHits = plane->GetEntriesFast();
-   //nHit_max=std::max(nHit_max,nHits);
-   // }
-
-   //std::vector<std::vector<TVDCCluster*>> planeSets(nHit_max);
-   //planeSets.resize(5);
-   /* end */
    
    // find cluster combination
    for (int iPlane = 0; iPlane < fNPlane; ++iPlane) {
@@ -72,8 +58,6 @@ void art::TVDCTrackingProcessor_mod::Process()
 
 
        TVDCCluster* planeCluster = (TVDCCluster*)plane->At(iHit);
-       //	 printf("iPlane = %d, iHit = %d, %p\n",iPlane,iHit,planeCluster);
-       planeCluster->SetAuxID(iPlane);
        //planeCluster->SetAuxID(AuxID);
        
        if (fVerboseLevel > 2)  printf("Hit Pos = %10f,  Timestamp = %20f\n",planeCluster->GetHitPos(),planeCluster->GetTimestamp());
@@ -148,56 +132,56 @@ void art::TVDCTrackingProcessor_mod::FindTrack(const std::vector<TVDCCluster*>& 
   std::vector<Double_t> bestResidual(Plane_size,0);
    
    //   for (int iPlane = 0; iPlane != fNPlane; ++iPlane) {
-   for (int i = 0, n = planes.size(); i < n; ++i) {
-      TVDCCluster* planeData = planes[i];
-      int iPlane = planeData->GetAuxID();
-      const Double_t cos = fCos[iPlane];
-      const Double_t sin = fSin[iPlane];
-      const Double_t x   = fX[iPlane];
-      const Double_t y   = fY[iPlane];
-      
-      //const TMWDCPlaneInfo &planeInfo = *fPlaneInfo->at(iPlane);
-      const TMWDCPlaneInfo &planeInfo = *fPlaneInfo->at(iPlane);
-      const Double_t cellSize = planeInfo.GetCellSize();
-      const Double_t center   = planeInfo.GetCenter();
-      // printf("[%d] planeData = %p\n",iPlane,planeData);
+  for (int i = 0, n = planes.size(); i < n; ++i) {
+    TVDCCluster* planeData = planes[i];
+    int iPlane = planeData->GetAuxID();
+    const Double_t cos = fCos[iPlane];
+    const Double_t sin = fSin[iPlane];
+    const Double_t x   = fX[iPlane];
+    const Double_t y   = fY[iPlane];
+    
+    //const TMWDCPlaneInfo &planeInfo = *fPlaneInfo->at(iPlane);
+    const TMWDCPlaneInfo &planeInfo = *fPlaneInfo->at(iPlane);
+    const Double_t cellSize = planeInfo.GetCellSize();
+    const Double_t center   = planeInfo.GetCenter();
+    // printf("[%d] planeData = %p\n",iPlane,planeData);
       pos[iPlane] = (planeData->GetHitPos() - center) * cellSize + x * cos + y * sin;
       //pos[i] = (planeData->GetHitPos() - center) * cellSize + x * cos + y * sin;
-   }
+  }
    
-   // Info("FindTrack","plane info done");
-   const TMatrixD &g = *fGMatrix;
-   // Info("FindTrack","matrix is prepared");
-   for (Int_t iParameter = 0; iParameter!=fNParameter; ++iParameter) {
-      // calculate pos[] \dot g[iParameter][]
-      trackPrm[iParameter] = std::inner_product(pos.begin(),pos.end(),
+  // Info("FindTrack","plane info done");
+  const TMatrixD &g = *fGMatrix;
+  // Info("FindTrack","matrix is prepared");
+  for (Int_t iParameter = 0; iParameter!=fNParameter; ++iParameter) {
+    // calculate pos[] \dot g[iParameter][]
+    trackPrm[iParameter] = std::inner_product(pos.begin(),pos.end(),
                                                 g[iParameter].GetPtr(),0.);
-   }
-
-   // Info("FindTrack","trackprm is calculated");
+  }
+  
+  // Info("FindTrack","trackprm is calculated");
    
-   const Double_t SSR = CalcSSR(pos,trackPrm,residual);
-   std::copy(trackPrm.begin(),trackPrm.end(),bestTrackPrm.begin());
-   std::copy(residual.begin(),residual.end(),bestResidual.begin());
-   
-
-   if (fNParameter == 2) {
-       tr->SetTrack(bestTrackPrm[0],bestTrackPrm[1],0,0,0);
+  const Double_t SSR = CalcSSR(pos,trackPrm,residual);
+  std::copy(trackPrm.begin(),trackPrm.end(),bestTrackPrm.begin());
+  std::copy(residual.begin(),residual.end(),bestResidual.begin());
+  
+  
+  if (fNParameter == 2) {
+    tr->SetTrack(bestTrackPrm[0],bestTrackPrm[1],0,0,0);
    } else {
-
-      TVector3 vec(bestTrackPrm[2],bestTrackPrm[3],1);
-//      vec.Print();
-      vec.RotateX(fTiltedAngleY*TMath::DegToRad());
-      vec.RotateY(fTiltedAngleY*TMath::DegToRad());
-      vec.RotateZ(fTiltedAngleY*TMath::DegToRad());
-//      vec.Print();
+    
+    TVector3 vec(bestTrackPrm[2],bestTrackPrm[3],1);
+    //      vec.Print();
+    vec.RotateX(fTiltedAngleY*TMath::DegToRad());
+    vec.RotateY(fTiltedAngleY*TMath::DegToRad());
+    vec.RotateZ(fTiltedAngleY*TMath::DegToRad());
+    //      vec.Print();
       
-      tr->SetTrack(bestTrackPrm[0],bestTrackPrm[1],0,
-                   vec.X()/vec.Z(),
-                   vec.Y()/vec.Z());
-   }
+    tr->SetTrack(bestTrackPrm[0],bestTrackPrm[1],0,
+		 vec.X()/vec.Z(),
+		 vec.Y()/vec.Z());
+  }
    tr->SetSSR(SSR);
-
+   
    //for(Int_t i=0;i!=fNPlane;++i){
    // tr->SetWireIDAdopted(i,->GetDetID());
    // tr->SetDriftLengthAdopted(i,fPlaneData[i]->GetDriftLength());

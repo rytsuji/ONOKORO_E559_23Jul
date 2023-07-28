@@ -9,8 +9,8 @@
  *    Copyright (C) 2013 KAWASE Shoichiro All rights reserved
  */
 
-#ifndef TVDCCLUSTERIZATIONPROCESSOR_MOD_H
-#define TVDCCLUSTERIZATIONPROCESSOR_MOD_H
+#ifndef TVDCCLUSTERIZATIONSIZESELECTABLEPROCESSOR_MOD_H
+#define TVDCCLUSTERIZATIONSIZESELECTABLEPROCESSOR_MOD_H
 
 #include "TProcessor.h"
 #include <vector>
@@ -24,12 +24,12 @@ namespace art {
 class art::TVDCClusterizationSizeSelectableProcessor : public TProcessor {
 public:
    // Default constructor
-   TVDCClusterizationSizeSelectableProcessor();
-   virtual ~TVDCClusterizationSizeSelectableProcessor();
+  TVDCClusterizationSizeSelectableProcessor();
+  virtual ~TVDCClusterizationSizeSelectableProcessor();
 
-   virtual void Init(TEventCollection *col);
-   virtual void Process();
-   virtual void ProcessCluster(std::vector<std::vector<TMWDCHitData*>> wires);
+  virtual void Init(TEventCollection *col);
+  virtual void Process();
+  virtual void ProcessCluster(std::vector<std::vector<TMWDCHitData*>> wires);
 protected:
   TString		 fInputColName;     // name of input collection
   TString	         fMWDCName;         // name of mwdc

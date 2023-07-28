@@ -19,8 +19,8 @@ Processor:
       FileName: prm/pla/pla_gr_@VMEFERA@_ch2MeV.dat
 
   - name: proc_pla_gr_@VMEFERA@_raw
-    type: art::TTimingChargeMappingProcessor  
-#    type: art::TTimingChargeMultiHitMappingProcessor
+#   type: art::TTimingChargeMappingProcessor  
+    type: art::TTimingChargeMultiHitMappingProcessor
     parameter:
       CatID:              @CATID@
       ChargeType:         1

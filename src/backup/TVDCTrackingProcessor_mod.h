@@ -12,8 +12,9 @@
 #ifndef TVDCTRACKINGPROCESSOR_H
 #define TVDCTRACKINGPROCESSOR_H
 
-#include "TMWDCTrackingProcessor.h"
+//#include "TMWDCTrackingProcessor.h"
 
+#include "TMWDCTrackingClustSizeSelectableProcessor.cc"
 namespace art {
    class TVDCTrackingProcessor_mod;
    class TMWDCTrackingResult;
@@ -39,7 +40,5 @@ protected:
 
    ClassDef(TVDCTrackingProcessor_mod,0) // vdc tracking processor
 };
-
-
 
 #endif //TVDCTRACKINGPROCESSOR_H

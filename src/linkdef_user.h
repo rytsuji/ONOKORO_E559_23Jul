@@ -19,7 +19,9 @@
 #pragma link off all functions;
 
 #pragma link C++ class art::TVDCClusterizationSizeSelectableProcessor+;
-#pragma link C++ class art::TVDCTrackingProcessor_mod+;
+//#pragma link C++ class art::TMWDCTrackingClustSizeSelectableProcessor+;
+#pragma link C++ class art::TVDCTrackingXZRotatableProcessor+;
+//#pragma link C++ class art::TVDCTrackingPlaneSelectableProcessor+;
 #pragma link C++ class art::TTimingChargeMultiHitMappingProcessor+;
 #pragma link C++ class art::TTimeTrefValidator+;
 

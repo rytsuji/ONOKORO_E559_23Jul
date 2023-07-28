@@ -192,7 +192,8 @@ void TVDCClusterizationSizeSelectableProcessor::Process()
            // accept the existing wire id for a multi hit
            mhits.push_back(aHit);
            last = aHit;
-        } else if (last->GetID() + 1 == aHit->GetID()) {
+	   //	} else if (last->GetID() + 1 == aHit->GetID()) {
+	} else if (last->GetID() + 1 == aHit->GetID() || last->GetID() + 2 == aHit->GetID()) {	   
            wires.push_back(mhits);
            mhits.clear();
            mhits.push_back(aHit);

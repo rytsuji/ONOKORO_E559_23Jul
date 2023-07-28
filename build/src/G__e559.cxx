@@ -36,7 +36,7 @@
 
 // Header files passed as explicit arguments
 #include "TVDCClusterizationSizeSelectableProcessor.h"
-#include "TVDCTrackingProcessor_mod.h"
+#include "TVDCTrackingXZRotatableProcessor.h"
 #include "TTimingChargeMultiHitMappingProcessor.h"
 #include "TTimeTrefValidator.h"
 
@@ -78,35 +78,35 @@ namespace ROOT {
 } // end of namespace ROOT
 
 namespace ROOT {
-   static void *new_artcLcLTVDCTrackingProcessor_mod(void *p = nullptr);
-   static void *newArray_artcLcLTVDCTrackingProcessor_mod(Long_t size, void *p);
-   static void delete_artcLcLTVDCTrackingProcessor_mod(void *p);
-   static void deleteArray_artcLcLTVDCTrackingProcessor_mod(void *p);
-   static void destruct_artcLcLTVDCTrackingProcessor_mod(void *p);
+   static void *new_artcLcLTVDCTrackingXZRotatableProcessor(void *p = nullptr);
+   static void *newArray_artcLcLTVDCTrackingXZRotatableProcessor(Long_t size, void *p);
+   static void delete_artcLcLTVDCTrackingXZRotatableProcessor(void *p);
+   static void deleteArray_artcLcLTVDCTrackingXZRotatableProcessor(void *p);
+   static void destruct_artcLcLTVDCTrackingXZRotatableProcessor(void *p);
 
    // Function generating the singleton type initializer
-   static TGenericClassInfo *GenerateInitInstanceLocal(const ::art::TVDCTrackingProcessor_mod*)
+   static TGenericClassInfo *GenerateInitInstanceLocal(const ::art::TVDCTrackingXZRotatableProcessor*)
    {
-      ::art::TVDCTrackingProcessor_mod *ptr = nullptr;
-      static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::art::TVDCTrackingProcessor_mod >(nullptr);
+      ::art::TVDCTrackingXZRotatableProcessor *ptr = nullptr;
+      static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::art::TVDCTrackingXZRotatableProcessor >(nullptr);
       static ::ROOT::TGenericClassInfo 
-         instance("art::TVDCTrackingProcessor_mod", ::art::TVDCTrackingProcessor_mod::Class_Version(), "TVDCTrackingProcessor_mod.h", 24,
-                  typeid(::art::TVDCTrackingProcessor_mod), ::ROOT::Internal::DefineBehavior(ptr, ptr),
-                  &::art::TVDCTrackingProcessor_mod::Dictionary, isa_proxy, 4,
-                  sizeof(::art::TVDCTrackingProcessor_mod) );
-      instance.SetNew(&new_artcLcLTVDCTrackingProcessor_mod);
-      instance.SetNewArray(&newArray_artcLcLTVDCTrackingProcessor_mod);
-      instance.SetDelete(&delete_artcLcLTVDCTrackingProcessor_mod);
-      instance.SetDeleteArray(&deleteArray_artcLcLTVDCTrackingProcessor_mod);
-      instance.SetDestructor(&destruct_artcLcLTVDCTrackingProcessor_mod);
+         instance("art::TVDCTrackingXZRotatableProcessor", ::art::TVDCTrackingXZRotatableProcessor::Class_Version(), "TVDCTrackingXZRotatableProcessor.h", 26,
+                  typeid(::art::TVDCTrackingXZRotatableProcessor), ::ROOT::Internal::DefineBehavior(ptr, ptr),
+                  &::art::TVDCTrackingXZRotatableProcessor::Dictionary, isa_proxy, 4,
+                  sizeof(::art::TVDCTrackingXZRotatableProcessor) );
+      instance.SetNew(&new_artcLcLTVDCTrackingXZRotatableProcessor);
+      instance.SetNewArray(&newArray_artcLcLTVDCTrackingXZRotatableProcessor);
+      instance.SetDelete(&delete_artcLcLTVDCTrackingXZRotatableProcessor);
+      instance.SetDeleteArray(&deleteArray_artcLcLTVDCTrackingXZRotatableProcessor);
+      instance.SetDestructor(&destruct_artcLcLTVDCTrackingXZRotatableProcessor);
       return &instance;
    }
-   TGenericClassInfo *GenerateInitInstance(const ::art::TVDCTrackingProcessor_mod*)
+   TGenericClassInfo *GenerateInitInstance(const ::art::TVDCTrackingXZRotatableProcessor*)
    {
-      return GenerateInitInstanceLocal((::art::TVDCTrackingProcessor_mod*)nullptr);
+      return GenerateInitInstanceLocal((::art::TVDCTrackingXZRotatableProcessor*)nullptr);
    }
    // Static variable to force the class initialization
-   static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const ::art::TVDCTrackingProcessor_mod*)nullptr); R__UseDummy(_R__UNIQUE_DICT_(Init));
+   static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const ::art::TVDCTrackingXZRotatableProcessor*)nullptr); R__UseDummy(_R__UNIQUE_DICT_(Init));
 } // end of namespace ROOT
 
 namespace ROOT {
@@ -212,37 +212,37 @@ TClass *TVDCClusterizationSizeSelectableProcessor::Class()
 } // namespace art
 namespace art {
 //______________________________________________________________________________
-atomic_TClass_ptr TVDCTrackingProcessor_mod::fgIsA(nullptr);  // static to hold class pointer
+atomic_TClass_ptr TVDCTrackingXZRotatableProcessor::fgIsA(nullptr);  // static to hold class pointer
 
 //______________________________________________________________________________
-const char *TVDCTrackingProcessor_mod::Class_Name()
+const char *TVDCTrackingXZRotatableProcessor::Class_Name()
 {
-   return "art::TVDCTrackingProcessor_mod";
+   return "art::TVDCTrackingXZRotatableProcessor";
 }
 
 //______________________________________________________________________________
-const char *TVDCTrackingProcessor_mod::ImplFileName()
+const char *TVDCTrackingXZRotatableProcessor::ImplFileName()
 {
-   return ::ROOT::GenerateInitInstanceLocal((const ::art::TVDCTrackingProcessor_mod*)nullptr)->GetImplFileName();
+   return ::ROOT::GenerateInitInstanceLocal((const ::art::TVDCTrackingXZRotatableProcessor*)nullptr)->GetImplFileName();
 }
 
 //______________________________________________________________________________
-int TVDCTrackingProcessor_mod::ImplFileLine()
+int TVDCTrackingXZRotatableProcessor::ImplFileLine()
 {
-   return ::ROOT::GenerateInitInstanceLocal((const ::art::TVDCTrackingProcessor_mod*)nullptr)->GetImplFileLine();
+   return ::ROOT::GenerateInitInstanceLocal((const ::art::TVDCTrackingXZRotatableProcessor*)nullptr)->GetImplFileLine();
 }
 
 //______________________________________________________________________________
-TClass *TVDCTrackingProcessor_mod::Dictionary()
+TClass *TVDCTrackingXZRotatableProcessor::Dictionary()
 {
-   fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::art::TVDCTrackingProcessor_mod*)nullptr)->GetClass();
+   fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::art::TVDCTrackingXZRotatableProcessor*)nullptr)->GetClass();
    return fgIsA;
 }
 
 //______________________________________________________________________________
-TClass *TVDCTrackingProcessor_mod::Class()
+TClass *TVDCTrackingXZRotatableProcessor::Class()
 {
-   if (!fgIsA.load()) { R__LOCKGUARD(gInterpreterMutex); fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::art::TVDCTrackingProcessor_mod*)nullptr)->GetClass(); }
+   if (!fgIsA.load()) { R__LOCKGUARD(gInterpreterMutex); fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::art::TVDCTrackingXZRotatableProcessor*)nullptr)->GetClass(); }
    return fgIsA;
 }
 
@@ -358,38 +358,38 @@ namespace ROOT {
 
 namespace art {
 //______________________________________________________________________________
-void TVDCTrackingProcessor_mod::Streamer(TBuffer &R__b)
+void TVDCTrackingXZRotatableProcessor::Streamer(TBuffer &R__b)
 {
-   // Stream an object of class art::TVDCTrackingProcessor_mod.
+   // Stream an object of class art::TVDCTrackingXZRotatableProcessor.
 
    if (R__b.IsReading()) {
-      R__b.ReadClassBuffer(art::TVDCTrackingProcessor_mod::Class(),this);
+      R__b.ReadClassBuffer(art::TVDCTrackingXZRotatableProcessor::Class(),this);
    } else {
-      R__b.WriteClassBuffer(art::TVDCTrackingProcessor_mod::Class(),this);
+      R__b.WriteClassBuffer(art::TVDCTrackingXZRotatableProcessor::Class(),this);
    }
 }
 
 } // namespace art
 namespace ROOT {
    // Wrappers around operator new
-   static void *new_artcLcLTVDCTrackingProcessor_mod(void *p) {
-      return  p ? new(p) ::art::TVDCTrackingProcessor_mod : new ::art::TVDCTrackingProcessor_mod;
+   static void *new_artcLcLTVDCTrackingXZRotatableProcessor(void *p) {
+      return  p ? new(p) ::art::TVDCTrackingXZRotatableProcessor : new ::art::TVDCTrackingXZRotatableProcessor;
    }
-   static void *newArray_artcLcLTVDCTrackingProcessor_mod(Long_t nElements, void *p) {
-      return p ? new(p) ::art::TVDCTrackingProcessor_mod[nElements] : new ::art::TVDCTrackingProcessor_mod[nElements];
+   static void *newArray_artcLcLTVDCTrackingXZRotatableProcessor(Long_t nElements, void *p) {
+      return p ? new(p) ::art::TVDCTrackingXZRotatableProcessor[nElements] : new ::art::TVDCTrackingXZRotatableProcessor[nElements];
    }
    // Wrapper around operator delete
-   static void delete_artcLcLTVDCTrackingProcessor_mod(void *p) {
-      delete ((::art::TVDCTrackingProcessor_mod*)p);
+   static void delete_artcLcLTVDCTrackingXZRotatableProcessor(void *p) {
+      delete ((::art::TVDCTrackingXZRotatableProcessor*)p);
    }
-   static void deleteArray_artcLcLTVDCTrackingProcessor_mod(void *p) {
-      delete [] ((::art::TVDCTrackingProcessor_mod*)p);
+   static void deleteArray_artcLcLTVDCTrackingXZRotatableProcessor(void *p) {
+      delete [] ((::art::TVDCTrackingXZRotatableProcessor*)p);
    }
-   static void destruct_artcLcLTVDCTrackingProcessor_mod(void *p) {
-      typedef ::art::TVDCTrackingProcessor_mod current_t;
+   static void destruct_artcLcLTVDCTrackingXZRotatableProcessor(void *p) {
+      typedef ::art::TVDCTrackingXZRotatableProcessor current_t;
       ((current_t*)p)->~current_t();
    }
-} // end of namespace ROOT for class ::art::TVDCTrackingProcessor_mod
+} // end of namespace ROOT for class ::art::TVDCTrackingXZRotatableProcessor
 
 namespace art {
 //______________________________________________________________________________
@@ -530,7 +530,7 @@ namespace {
   void TriggerDictionaryInitialization_libe559_Impl() {
     static const char* headers[] = {
 "TVDCClusterizationSizeSelectableProcessor.h",
-"TVDCTrackingProcessor_mod.h",
+"TVDCTrackingXZRotatableProcessor.h",
 "TTimingChargeMultiHitMappingProcessor.h",
 "TTimeTrefValidator.h",
 nullptr
@@ -554,7 +554,7 @@ nullptr
 #pragma clang diagnostic ignored "-Wreturn-type-c-linkage"
 extern int __Cling_AutoLoading_Map;
 namespace art{class __attribute__((annotate(R"ATTRDUMP(processor for MWDC plane division)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$TVDCClusterizationSizeSelectableProcessor.h")))  TVDCClusterizationSizeSelectableProcessor;}
-namespace art{class __attribute__((annotate(R"ATTRDUMP(vdc tracking processor)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$TVDCTrackingProcessor_mod.h")))  TVDCTrackingProcessor_mod;}
+namespace art{class __attribute__((annotate(R"ATTRDUMP(vdc tracking processor)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$TVDCTrackingXZRotatableProcessor.h")))  TVDCTrackingXZRotatableProcessor;}
 namespace art{class __attribute__((annotate(R"ATTRDUMP(processor for mapping timine and charge data for multi hit data)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$TTimingChargeMultiHitMappingProcessor.h")))  TTimingChargeMultiHitMappingProcessor;}
 namespace art{class __attribute__((annotate(R"ATTRDUMP(validate time in certain window)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$TTimeTrefValidator.h")))  TTimeTrefValidator;}
 )DICTFWDDCLS";
@@ -565,7 +565,7 @@ namespace art{class __attribute__((annotate(R"ATTRDUMP(validate time in certain 
 #define _BACKWARD_BACKWARD_WARNING_H
 // Inline headers
 #include "TVDCClusterizationSizeSelectableProcessor.h"
-#include "TVDCTrackingProcessor_mod.h"
+#include "TVDCTrackingXZRotatableProcessor.h"
 #include "TTimingChargeMultiHitMappingProcessor.h"
 #include "TTimeTrefValidator.h"
 
@@ -575,7 +575,7 @@ namespace art{class __attribute__((annotate(R"ATTRDUMP(validate time in certain 
 "art::TTimeTrefValidator", payloadCode, "@",
 "art::TTimingChargeMultiHitMappingProcessor", payloadCode, "@",
 "art::TVDCClusterizationSizeSelectableProcessor", payloadCode, "@",
-"art::TVDCTrackingProcessor_mod", payloadCode, "@",
+"art::TVDCTrackingXZRotatableProcessor", payloadCode, "@",
 nullptr
 };
     static bool isInitialized = false;
