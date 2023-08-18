@@ -7,7 +7,7 @@ alias:
 #  - &timegate [-200,100]
 #  - &timegate [-700,-350]
 #  - &timegate [-1590,-1340]
-  - &timegate [-1580,-1320]
+  - &timegate [-1600,-1300]
 
 Processor:
 
@@ -222,11 +222,11 @@ Processor:
       TiltedAngleY: -60
       TiltedAngleZ: 0 
       InputCollection:
-#        - vdc_las_clust_x1
-        - vdc_las_clust_u1
+        - vdc_las_clust_x1
+#        - vdc_las_clust_u1
         - vdc_las_clust_v1
-#        - vdc_las_clust_x2
-        - vdc_las_clust_u2
+        - vdc_las_clust_x2
+#        - vdc_las_clust_u2
         - vdc_las_clust_v2
       OutputCollection: vdc_las_m2
       OutputTransparency: 0

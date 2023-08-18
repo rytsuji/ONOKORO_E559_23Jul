@@ -1,47 +1,14 @@
-  - name: gate_array_init
-    type: art::TGateArrayInitializer
-    parameter:
-      OutputTransparency: 1
-
-  - name: las_charge
-    type: art::TTreeFormulaGateProcessor
-    parameter:
-      Definitions:
-        - "gate_las_Charge; pla_las_vme_3.fCharge> @Q_LAS_MIN && pla_las_vme_3.fCharge < @Q_LAS_MAX"
-
-  - name: stop_proc
-    type: art::TGateStopProcessor
-    parameter:
-      GateName: "gate_las_charge"
-
-  - name: gate_array_init
-    type: art::TGateArrayInitializer
-    parameter:
-      OutputTransparency: 1
-
-  - name: las_rf
-    type: art::TTreeFormulaGateProcessor
-    parameter:
-      Definitions:
-        - "gate_las_rf; abs(tref_las_fTiming - @RF.fTiming  - ( @RF_LAS_MIN+ @RF_LAS_MAX ) ) < ( @RF_LAS_MAX -@RF_LAS_MIN)/2 || abs(tref_las_fTiming - @RF.fTiming  - ( @RF_LAS_MIN+ @RF_LAS_MAX ) ) < ( @RF_LAS_MAX -@RF_LAS_MIN)/2 "
-
-  - name: stop_proc
-    type: art::TGateStopProcessor
-    parameter:
-      GateName: "gate_las_rf"
-
-  - name: gate_array_init
-    type: art::TGateArrayInitializer
-    parameter:
-      OutputTransparency: 1
-
-  - name: 2nd_pla_veto
-    type: art::TTreeFormulaGateProcessor
-    parameter:
-      Definitions:
-        - "gate_2nd_pla_veto; @pla_las_vme_5.GetEntriesFast()==0"
-
-#  - name: stop_proc
-#    type: art::TGateStopProcessor
-#    parameter:
-#      GateName: "gate_las_rf_2nd"
+Processor:
+  - include:
+      name: gate_las.tmpl.yaml
+      replace:
+        Q_LAS_MIN: 400
+        Q_LAS_MAX: 2000
+        T_LAS_MIN: 30
+        T_LAS_MAX: 50
+        RF: rf2
+#        Q_LAS_MIN: 300
+#        Q_LAS_MAX: 1200
+#        T_LAS_MIN: 40
+#        T_LAS_MAX: 55
+#        RF: rf2

@@ -1,11 +1,11 @@
 {
 
   double qmin=300.;
-  double qmax=2000.;
-  double tmin=45.;
-  double tmax=65.;
-  double tc_center=845.;
-  double tc_center_acc=775.;
+  double qmax=1000.;
+  double tmin=32.;
+  double tmax=45.;
+  double tc_center=820.;
+  double tc_center_acc=750.;
   
   
   TCut coin = "trig_coin.fID[0]==0";

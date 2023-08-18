@@ -7,7 +7,8 @@ Processor:
       FileName: prm/tref_ch2ns.dat
 
   - name: proc_tref_map
-    type: art::TTimingChargeMappingProcessor
+#    type: art::TTimingChargeMappingProcessor
+    type: art::TTimingChargeMultiHitMappingProcessor
     parameter:
       CatID:              100
       ChargeType:         0
