@@ -1,19 +1,4 @@
 Processor:
-  - name: gate_array_init
-    type: art::TGateArrayInitializer
-    parameter:
-      OutputTransparency: 1
-
-  - name: las_charge
-    type: art::TTreeFormulaGateProcessor
-    parameter:
-      Definitions:
-        - "gate_las_Charge; pla_las_vme_3.fCharge> @Q_LAS_MIN@ && pla_las_vme_3.fCharge < @Q_LAS_MAX@"
-
-  - name: stop_proc
-    type: art::TGateStopProcessor
-    parameter:
-      GateName: "gate_las_charge"
 
   - name: gate_array_init
     type: art::TGateArrayInitializer
@@ -24,7 +9,7 @@ Processor:
     type: art::TTreeFormulaGateProcessor
     parameter:
       Definitions:
-        - "gate_las_rf; abs( fmod(tref_las.fTiming - @RF@.fTiming + 710., 71.)  - ( @T_LAS_MIN@ + @T_LAS_MAX@ )/2. ) < abs( @T_LAS_MAX@ -@T_LAS_MIN@)/2. "
+        - "gate_las_rf; abs( fmod(tref_las.fTiming - @RF@.fTiming + 710., 71.)  - ( @T_LAS_MIN@ + @T_LAS_MAX@ )/2. ) < abs( @T_LAS_MAX@ -@T_LAS_MIN@)/2. && pla_las_vme_3.fCharge> @Q_LAS_MIN@ && pla_las_vme_3.fCharge < @Q_LAS_MAX@"
 
 
   - name: stop_proc
@@ -32,18 +17,18 @@ Processor:
     parameter:
       GateName: "gate_las_rf"
 
-  - name: gate_array_init
-    type: art::TGateArrayInitializer
-    parameter:
-      OutputTransparency: 1
+#  - name: gate_array_init
+#    type: art::TGateArrayInitializer
+#    parameter:
+#      OutputTransparency: 1
 
-  - name: 2nd_pla_veto
-    type: art::TTreeFormulaGateProcessor
-    parameter:
-      Definitions:
-        - "gate_2nd_pla_veto; @pla_las_vme_4.GetEntriesFast()==0 && @pla_las_vme_5.GetEntriesFast()==0 && @pla_las_vme_6.GetEntriesFast()==0"
+#  - name: 2nd_pla_veto
+#    type: art::TTreeFormulaGateProcessor
+#    parameter:
+#      Definitions:
+#        - "gate_2nd_pla_veto; @pla_las_vme_4.GetEntriesFast()==0 && @pla_las_vme_5.GetEntriesFast()==0 && @pla_las_vme_6.GetEntriesFast()==0"
 
-  - name: stop_proc
-    type: art::TGateStopProcessor
-    parameter:
-      GateName: "gate_2nd_pla_veto"
+#  - name: stop_proc
+#    type: art::TGateStopProcessor
+#    parameter:
+#      GateName: "gate_2nd_pla_veto"

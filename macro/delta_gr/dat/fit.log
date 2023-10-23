@@ -1,0 +1,65 @@
+
+
+*******************************************************************************
+Fri Sep 15 03:30:44 2023
+
+
+FIT:    data read from "4208_Ca_gs.dat" u 1:2:3
+        format = x:y:z
+        #datapoints = 5
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x,y)
+	f(x,y)=a+b*x+c*y+d*x*x+e*y*y+f*x*y
+fitted parameters initialized with current variable values
+
+BREAK: Number of data points smaller than number of parameters
+
+*******************************************************************************
+Fri Sep 15 03:31:06 2023
+
+
+FIT:    data read from "4208_Ca_gs.dat" u 1:2:3
+        format = x:y:z
+        #datapoints = 5
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x,y)
+	f(x,y)=a+b*x+c*y+d*x*x+e*y*y+f*x*y
+fitted parameters initialized with current variable values
+
+BREAK: Number of data points smaller than number of parameters
+
+*******************************************************************************
+Fri Sep 15 03:31:27 2023
+
+
+FIT:    data read from "4208_Ca_gs.dat" u 1:2:3
+        format = x:y:z
+        #datapoints = 5
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x,y)
+	f(x,y)=a+b*x+c*y+d*x*x+e*y*y
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b             c             d             e            
+   0 2.5412614109e+10   0.00e+00  3.17e+04    1.000000e+00   1.000000e+00   1.000000e+00   1.000000e+00   1.000000e+00
+  16 8.9074259928e-34   0.00e+00  3.17e+02    9.627756e-02   8.397696e-04   8.882895e-06   1.547773e-06   4.053900e-08
+
+After 16 iterations the fit converged.
+final sum of squares of residuals : 8.90743e-34
+abs. change during last iteration : 0
+
+
+Exactly as many data points as there are parameters.
+In this degenerate case, all errors are zero by definition.
+
+Final set of parameters 
+======================= 
+
+a               = 0.0962776      
+b               = 0.00083977     
+c               = 8.88289e-06    
+d               = 1.54777e-06    
+e               = 4.0539e-08     

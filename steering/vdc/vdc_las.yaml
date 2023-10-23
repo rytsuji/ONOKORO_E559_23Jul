@@ -7,7 +7,7 @@ alias:
 #  - &timegate [-200,100]
 #  - &timegate [-700,-350]
 #  - &timegate [-1590,-1340]
-  - &timegate [-1600,-1300]
+  - &timegate [-1590,-1300]
 
 Processor:
 

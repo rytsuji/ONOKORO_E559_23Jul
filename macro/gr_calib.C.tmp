@@ -1,0 +1,73 @@
+class prm_a{
+Double_t a[3][3][3];
+
+ public:
+  inline int X() const { return x; }
+  inline int X(int x) { return this->x = x; }
+  inline int Y() const { return y; }
+  inline int Y(int y) { return this->y = y; }
+};
+
+
+
+Double_t b[3][3][3]; 
+
+
+Double_t f_theta_gr(Double_t a, Double_t x, Double_t y) {
+  Double_t val=0;
+  for(int i=0; i < 3; i++ ){
+    for(int j=0; j < 3; j++ ){
+      for(int k=0; k < 3; k++ ){
+	val += a[i][j][k]*pow(a,i)*pow(x,j)*pow(y,k);
+      }
+    }      
+  }
+  return val;
+}
+
+Double_t f_phi_gr(Double_t a, Double_t x, Double_t y) {
+  Double_t val=0;
+  for(int i=0; i < 3; i++ ){
+    for(int j=0; j < 3; j++ ){
+      for(int k=0; k < 3; k++ ){
+	val += b[i][j][k]*pow(a,i)*pow(x,j)*pow(y,k);
+      }
+    }      
+  }
+  return val;
+}
+
+
+
+
+void gr_calib(void){
+    
+  for(int i=0; i < 3; i++ ){
+      for(int j=0; j < 3; j++ ){
+	for(int k=0; k < 3; k++ ){
+	a[i][j][k]=0;
+	}
+      }
+  }
+
+  a[0][0][0]=-2.05403; //const
+  a[1][0][0]=0.296703; //(theta|a)_1st order
+  a[0][1][0]= -0.0476013; //(theta|x)_1st order
+  a[0][0][1]=-0.0195392; //(theta|y)_1st order
+
+  for(int i=0; i < 3; i++ ){
+      for(int j=0; j < 3; j++ ){
+	for(int k=0; k < 3; k++ ){
+	b[i][j][k]=0;
+	}
+      }
+  }
+  
+  b[0][0][0]= -18.3957 ;
+  b[1][0][0]= -0.185089 ; //(phi|a)_1st order
+  b[0][1][0]= 0.000335083 ; //(phi|x)_1st order
+  b[0][0][1]= 3.3201; //(phi|y)_1st ordre
+  
+  tree->SetAlias("theta_gr","f_theta_gr(vdc_gr_m.fA*1000:vdc_gr_m.fX,vdc_gr_m.fY)");
+  tree->SetAlias("phi_gr","f_phi_gr(vdc_gr_m.fA*1000:vdc_gr_m.fX,vdc_gr_m.fY)"); 
+}

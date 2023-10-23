@@ -47,31 +47,11 @@ Processor:
     parameter:
       GateName: "gate_coin"
 
-  - name: gate_array_init
-    type: art::TGateArrayInitializer
-    parameter:
-      OutputTransparency: 1
-
-  - name: true_coin
-    type: art::TTreeFormulaGateProcessor
-    parameter:
-      Definitions:
-        - "gate_true_coin; abs(tref_las.fTiming-tref_grtrig.fTiming-795)<20" 
-
-  - name: stop_proc
-    type: art::TGateStopProcessor
-    parameter:
-      GateName: "gate_true_coin"
-
-
-
-
-
-
-
-
   - include: pla/pla_gr.yaml  
   - include: pla/pla_las.yaml  
+
+  - include:  gate/gate_las.yaml
+  - include:  gate/gate_gr.yaml
 
   - include: vdc/vdc_gr.yaml
   - include: vdc/vdc_las.yaml  

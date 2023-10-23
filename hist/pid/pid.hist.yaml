@@ -17,7 +17,7 @@ group:
        y: ["pla_gr_vme_1.fCharge", 1000, 0, 4000]       
      - name: tot_rf_gr
        title: TOT-RF of VDC GR
-       x: ["tref_grtrig.fTiming-rf1.fTiming", 300, -300, 0]
+       x: ["fmod(tref_grtrig.fTiming-rf1.fTiming+710.,142.0)", 300, 0, 150]
        y: ["vdc_gr_raw.fCharge", 1000, 0, 4000]
      - name: x_de_gr
        title: X-deltaE GR
@@ -44,9 +44,21 @@ group:
        title: deltaE-RF3 LAS
        x: ["fmod(tref_las.fTiming-rf3.fTiming+710.,142.)", 300, 0, 150]       
        y: ["pla_las_vme_3.fCharge", 1000, 0, 4000]       
-     - name: tot_rf_las
+     - name: de2nd_rf1_las
+       title: 2nd deltaE-RF1 LAS
+       x: ["fmod(tref_las.fTiming-rf1.fTiming+710.,142.)", 300, 0, 150]
+       y: ["pla_las_vme_5.fCharge", 1000, 0, 4000]
+     - name: de2nd_rf2_las
+       title: 2nd deltaE-RF2 LAS
+       x: ["fmod(tref_las.fTiming-rf2.fTiming+710.,142.)", 300, 0, 150]
+       y: ["pla_las_vme_5.fCharge", 1000, 0, 4000]
+     - name: de2nd_rf3_las
+       title: 2nd deltaE-RF3 LAS
+       x: ["fmod(tref_las.fTiming-rf3.fTiming+710.,142.)", 300, 0, 150]       
+       y: ["pla_las_vme_5.fCharge", 1000, 0, 4000]       
+     - name: tot_rf_las     
        title: TOT-RF of LAS 
-       x: ["fmod(tref_las.fTiming-rf1.fTiming,142.0)", 1500, 0, 1500]
+       x: ["fmod(tref_las.fTiming-rf2.fTiming+710.0,142.0)", 300, 0, 150]
        y: ["vdc_las_raw.fCharge", 1000, 0, 4000]
      - name: x_de_las
        title: X-deltaE LAS
