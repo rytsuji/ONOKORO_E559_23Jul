@@ -30,19 +30,20 @@ void elastic_cross(void){
   double Q2=3.3526;
   int t1=2;
   int t2=3;
-  double theta_ini=33.0;
+  //double theta_ini=33.0;
+  double theta=33.0;
 
-  double E_min=220;
-  double E_max=230;
+  double E_min=200;
+  double E_max=250;
 
   TString fname = "elastic_cross.dat"; 
   ofstream ofile((std::string) fname);
   
-  int N=1000;
+  int N=100000;
   for(int n=0;n<N;n++){
-    double E=E_max=E_max-(double)(E_max-E_min)/N;
-    double theta=theta_ini;
-    while(abs(elastic(E,theta,t1,Q1)-elastic(E,theta,t2,Q2))>0.01){
+    double E=E_max-((double) n/N)*(E_max-E_min);
+    //double theta=theta_ini;
+    while(abs(elastic(E,theta,t1,Q1)-elastic(E,theta,t2,Q2))>0.001){
       double f=elastic(E,theta,t1,Q1)-elastic(E,theta,t2,Q2);
       double dtheta=0.001;
       double df=(elastic(E,theta+dtheta,t1,Q1)-elastic(E,theta+dtheta,t2,Q2))-(elastic(E,theta,t1,Q1)-elastic(E,theta,t2,Q2));

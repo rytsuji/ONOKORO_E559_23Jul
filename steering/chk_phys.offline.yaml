@@ -1,0 +1,147 @@
+# file : chk.yaml 
+# date : 2022.07.01 by Y.HIJIKATA
+# lastest update : 2022.07.01 by Y.HIJIKATA
+
+Anchor:
+
+  - &input data/run@NUM@.bld
+  - &histout output/phys/run@NUM@.hist.root
+  - &output output/phys/run@NUM@.root
+
+Processor:
+  - name: timer
+    type: art::TTimerProcessor
+
+  - name: es_rcnp
+    type: art::TRCNPEventStore_ts
+    parameter:
+      OutputTransparency: 1
+      InputFiles:
+         - *input
+
+  - name: mapper
+    type: art::TMappingProcessor
+    parameter:
+      OutputTransparency: 1
+      MapConfig: mapper_tamidaq.conf
+      
+  - include: tref.yaml
+  - include: trig.yaml
+  - include: rf.yaml
+  - include: tref_chk.yaml
+
+  - name: gate_array_init
+    type: art::TGateArrayInitializer
+    parameter:
+      OutputTransparency: 1
+
+  - name: trigger_gates
+    type: art::TTreeFormulaGateProcessor
+    parameter:
+      Definitions:
+        - "gate_coin; trig_coin.fID==0"
+
+  - name: stop_proc
+    type: art::TGateStopProcessor
+    parameter:
+      GateName: "gate_coin"
+
+  - include: pla/pla_gr.yaml  
+  - include: pla/pla_las.yaml  
+
+  - include:  gate/las/gate_las_@NUM@.yaml
+  - include:  gate/gr/gate_gr_@NUM@.yaml
+
+  - include: vdc/gr/vdc_gr_@NUM@.yaml
+  - include: vdc/las/vdc_las_@NUM@.yaml  
+
+  - name: hist_pla_gr
+    type: art::TTreeProjectionProcessor
+    parameter:
+      Type: art::TTreeProjection
+      FileName: hist/pla/pla_gr.hist.yaml
+      OutputFilename: *histout
+
+  - name: hist_pla_las
+    type: art::TTreeProjectionProcessor
+    parameter:
+      Type: art::TTreeProjection
+      FileName: hist/pla/pla_las.hist.yaml	
+      OutputFilename: *histout
+
+  - name: hist_pid
+    type: art::TTreeProjectionProcessor
+    parameter:
+      Type: art::TTreeProjection
+      FileName: hist/pid/pid.hist.yaml
+      OutputFilename: *histout
+
+  - name: hist_vdc_gr
+    type: art::TTreeProjectionProcessor
+    parameter:
+      Type: art::TTreeProjection
+      FileName: hist/vdc/vdc_gr.hist.yaml
+      OutputFilename: *histout
+
+  - name: hist_vdc_las
+    type: art::TTreeProjectionProcessor
+    parameter:
+      Type: art::TTreeProjection
+      FileName: hist/vdc/vdc_las.hist.yaml
+      OutputFilename: *histout
+
+  - name: hist_vdc_las_m
+    type: art::TTreeProjectionProcessor
+    parameter:
+      Type: art::TTreeProjection
+      FileName: hist/vdc/vdc_las_m.hist.yaml
+      OutputFilename: *histout
+
+  - name: hist_vdc_las_xu
+    type: art::TTreeProjectionProcessor
+    parameter:
+      Type: art::TTreeProjection
+      FileName: hist/vdc/vdc_las_xu.hist.yaml
+      OutputFilename: *histout
+
+  - name: hist_vdc_las_uv
+    type: art::TTreeProjectionProcessor
+    parameter:
+      Type: art::TTreeProjection
+      FileName: hist/vdc/vdc_las_uv.hist.yaml
+      OutputFilename: *histout
+
+  - name: hist_vdc_las_xv
+    type: art::TTreeProjectionProcessor
+    parameter:
+      Type: art::TTreeProjection
+      FileName: hist/vdc/vdc_las_xv.hist.yaml
+      OutputFilename: *histout
+
+  - name: hist_vdc_las_fp
+    type: art::TTreeProjectionProcessor
+    parameter:
+      Type: art::TTreeProjection
+      FileName: hist/vdc/vdc_las_fp.hist.yaml
+      OutputFilename: *histout
+
+  - name: hist_tc
+    type: art::TTreeProjectionProcessor
+    parameter:
+      Type: art::TTreeProjection
+      FileName: hist/phys/tc.hist.yaml
+      OutputFilename: *histout
+
+  - name: hist_phys
+    type: art::TTreeProjectionProcessor
+    parameter:
+      Type: art::TTreeProjection
+      FileName: hist/phys/run/phys_@NUM@.hist.yaml
+      OutputFilename: *histout
+
+
+  - name: outputtree
+    type: art::TOutputTreeProcessor
+    parameter:
+      FileName: *output
+      

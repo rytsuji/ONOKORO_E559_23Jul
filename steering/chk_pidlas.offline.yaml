@@ -1,0 +1,60 @@
+Anchor:
+  - &input data/run@NUM@.bld
+  - &histout output/pidlas/run@NUM@.hist.root
+  - &output output/pidlas/run@NUM@.root
+
+Processor:
+  - name: timer
+    type: art::TTimerProcessor
+
+  - name: es_rcnp
+    type: art::TRCNPEventStore_ts
+    parameter:
+      OutputTransparency: 1
+      InputFiles:
+         - *input
+
+  - name: mapper
+    type: art::TMappingProcessor
+    parameter:
+      OutputTransparency: 1
+      MapConfig: mapper_tamidaq.conf
+      
+  - include: tref.yaml
+  - include: trig.yaml
+  - include: rf.yaml
+  - include: tref_chk.yaml
+
+  - include: pla/pla_gr.yaml  
+  - include: pla/pla_las.yaml  
+
+  - include:  gate/las/gate_las_@NUM@.yaml
+
+  - include: vdc/las/vdc_las_@NUM@.yaml  
+
+  - name: hist_pla_las
+    type: art::TTreeProjectionProcessor                                                                                                                              
+    parameter:                                                                                                                                                       
+      Type: art::TTreeProjection                                                                                                                                     
+      FileName: hist/pla/pla_las.hist.yaml                                                                                                                           
+      OutputFilename: *histout 
+
+  - name: hist_pid
+    type: art::TTreeProjectionProcessor
+    parameter:
+      Type: art::TTreeProjection
+      FileName: hist/pid/pid.hist.yaml
+      OutputFilename: *histout
+
+  - name: hist_vdc_las
+    type: art::TTreeProjectionProcessor
+    parameter:
+      Type: art::TTreeProjection
+      FileName: hist/vdc/vdc_las.hist.yaml
+      OutputFilename: *histout
+
+  - name: outputtree
+    type: art::TOutputTreeProcessor
+    parameter:
+      FileName: *output
+      

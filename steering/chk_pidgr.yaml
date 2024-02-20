@@ -7,7 +7,7 @@ Anchor:
   - &input data/run@NUM@.bld
 #  - &input /home/e483/data/run2005.bld
   - &histout output/run@NUM@.hist.root
-  - &output output/run@NUM@.root
+  - &output output/run@NUM@_pidgr.root
 
 Processor:
   - name: timer
@@ -35,11 +35,11 @@ Processor:
   - include: pla/pla_las.yaml  
 
 #  - include:  gate/gate_las.yaml
-  - include:  gate/gate_gr.yaml
+  - include:  gate/gr/gate_gr_@NUM@.yaml
 
 
-  - include: vdc/vdc_gr.yaml
-  - include: vdc/vdc_las.yaml  
+  - include: vdc/vdc_gr_@NUM@.yaml
+#  - include: vdc/vdc_las.yaml  
 
   - name: hist_pla_gr
     type: art::TTreeProjectionProcessor
@@ -48,12 +48,12 @@ Processor:
       FileName: hist/pla/pla_gr.hist.yaml
       OutputFilename: *histout
 
-#  - name: hist_pla_las
-#    type: art::TTreeProjectionProcessor
-#    parameter:
-#      Type: art::TTreeProjection
-#      FileName: hist/pla/pla_las.hist.yaml	
-#      OutputFilename: *histout
+  - name: hist_vdc_gr
+    type: art::TTreeProjectionProcessor
+    parameter:
+      Type: art::TTreeProjection
+      FileName: hist/vdc/vdc_gr.hist.yaml
+      OutputFilename: *histout
 
   - name: hist_pid
     type: art::TTreeProjectionProcessor

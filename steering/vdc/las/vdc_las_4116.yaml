@@ -1,0 +1,18 @@
+Processor:
+  - include:
+      name: vdc_las.tmpl.yaml
+      replace:	
+        VDCLAS_X1_TMIN: -1590
+        VDCLAS_X1_TMAX: -1330
+        VDCLAS_X2_TMIN: -1590
+        VDCLAS_X2_TMAX: -1320
+        VDCLAS_U1_TMIN: -1590
+        VDCLAS_U1_TMAX: -1330
+        VDCLAS_U2_TMIN: -1580
+        VDCLAS_U2_TMAX: -1310
+        VDCLAS_V1_TMIN: -1590
+        VDCLAS_V1_TMAX: -1330
+        VDCLAS_V2_TMIN: -1580
+        VDCLAS_V2_TMAX: -1310		
+#        DT2DL: dummy
+        DT2DL: 4116

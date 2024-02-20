@@ -16,6 +16,27 @@ group:
  - name: vdc_las
    title: VDC LAS hist
    contents:
+     - name: las_x1_timing
+       title: VDC LAS X1 Timing
+       x: ["vdc_las_x1.fTiming", 1500, -3000, 0]
+     - name: las_x2_timing
+       title: VDC LAS X2 Timing
+       x: ["vdc_las_x2.fTiming", 1500, -3000, 0]
+     - name: las_u1_timing
+       title: VDC LAS U1 Timing
+       x: ["vdc_las_u1.fTiming", 1500, -3000, 0]
+     - name: las_u2_timing
+       title: VDC LAS U2 Timing
+       x: ["vdc_las_u2.fTiming", 1500, -3000, 0]
+     - name: las_v1_timing
+       title: VDC LAS V1 Timing
+       x: ["vdc_las_v1.fTiming", 1500, -3000, 0]
+     - name: las_v2_timing
+       title: VDC LAS V2 Timing
+       x: ["vdc_las_v2.fTiming", 1500, -3000, 0]
+     - name: ssr
+       title: VDC LAS SSR
+       x: ["vdc_las_m.GetSSR()", 1000, 0, 10]   
      - name: x_las
        title: X  LAS
        x: ["vdc_las_m.fX", *xbin, *xmin, *xmax]

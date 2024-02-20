@@ -1,0 +1,4 @@
+include:
+  - name: hist/vdc/vdc_las_tracking.hist.tmpl.yaml
+    replace:
+      PLANE: m

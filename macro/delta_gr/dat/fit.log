@@ -63,3 +63,41 @@ b               = 0.00083977
 c               = 8.88289e-06    
 d               = 1.54777e-06    
 e               = 4.0539e-08     
+
+
+*******************************************************************************
+Mon Nov 20 09:59:01 2023
+
+
+FIT:    data read from "4208_Ca_gs.dat" u 3:1
+        format = x:z
+        #datapoints = 9
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x)=a*x*x+b*x+c
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b             c            
+   0 6.5269115898e+05   0.00e+00  5.77e-01    1.000000e+00   1.000000e+00   1.000000e+00
+  11 2.8947806899e-01  -4.11e-07  5.77e-12   -6.652504e+07   1.611196e+06  -1.002069e+04
+
+After 11 iterations the fit converged.
+final sum of squares of residuals : 0.289478
+rel. change during last iteration : -4.10756e-12
+
+degrees of freedom    (FIT_NDF)                        : 6
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.219651
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0482463
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = -6.6525e+07      +/- 3.398e+06    (5.108%)
+b               = 1.6112e+06       +/- 8.331e+04    (5.171%)
+c               = -10020.7         +/- 510.6        (5.095%)
+
+correlation matrix of the fit parameters:
+                a      b      c      
+a               1.000 
+b              -1.000  1.000 
+c               1.000 -1.000  1.000 

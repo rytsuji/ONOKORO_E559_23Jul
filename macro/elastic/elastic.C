@@ -1,10 +1,10 @@
 double elastic(double theta,int target,double Q,double E_beam){
-
+  
   theta = theta*TMath::DegToRad();
   
   //double E_beam=229.127;
   double au=931.478;
-  double m[4]={1.007825*au,12.0*au,15.99491461957*au,39.962590863*au}; //p,12C,16O,40Ca
+  double m[5]={1.007825*au,12.0*au,15.99491461957*au,39.962590863*au,2.01410177812*au}; //p,12C,16O,40Ca,d
 
   double beta = sqrt(E_beam*(E_beam+2.0*m[0]))/(E_beam+m[0]+m[target]);
   double g = 1.0/sqrt(1.0-beta*beta);
@@ -22,8 +22,10 @@ double elastic(double theta,int target,double Q,double E_beam){
   
   double p_lab=sqrt(pow(g*beta*Ep_cm+g*p_cm*cos_cm,2.0)+p_cm*p_cm*(1-cos_cm*cos_cm));
 
+  
   //return sqrt(m[0]*m[0]+p_lab*p_lab)-m[0];
-  return p_lab;
+  //return (p_lab-680.632)/680.632;
+  return (p_lab-643.681)/643.681;
   
   
  

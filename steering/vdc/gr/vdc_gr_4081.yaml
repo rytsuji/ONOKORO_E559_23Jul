@@ -1,0 +1,14 @@
+Processor:
+  - include:
+      name: vdc_gr.tmpl.yaml
+      replace:
+        VDCGR_X1_TMIN: -210
+        VDCGR_X1_TMAX: 40
+        VDCGR_X2_TMIN: -210
+        VDCGR_X2_TMAX: 50
+        VDCGR_U1_TMIN: -210
+        VDCGR_U1_TMAX: 60
+        VDCGR_U2_TMIN: -210
+        VDCGR_U2_TMAX: 50
+#        DT2DL: dummy
+        DT2DL: 4081

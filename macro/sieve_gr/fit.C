@@ -50,12 +50,15 @@ void fit(TString conf){
   Double_t y_fp_err[5];
   Double_t b_fp[5];
   Double_t b_fp_err[5];
-
+  Double_t yc_fp[5];
+  Double_t yc_fp_err[5];
+  
   Double_t x_fp_sigma[5];
   Double_t a_fp_sigma[5];
   Double_t y_fp_sigma[5];
   Double_t b_fp_sigma[5];
-
+  Double_t yc_fp_sigma[5];
+  
   Double_t theta[5];
   Double_t phi[5];
   
@@ -80,31 +83,34 @@ void fit(TString conf){
   g[4]= new TF1("g[4]","f0+f1+f2+f3+f4+[15]+[16]*x+[17]*x*x",-50,50);
 
   // def canvas //
-  TCanvas *c1=new TCanvas("c1","c1",800,600);
-  
+  TCanvas *c1=new TCanvas("c1","c1",800,600);  
   TCanvas *c2=new TCanvas("c2","c2",1200,800);
   TCanvas *c3=new TCanvas("c3","c3",1200,800);
   TCanvas *c4=new TCanvas("c4","c4",1200,800);
+  TCanvas *c5=new TCanvas("c5","c5",1200,800);
   c2->Divide(2,3);
   c3->Divide(2,3);
-  c4->Divide(2,3);  
+  c4->Divide(2,3);
+  c5->Divide(2,3);  
   
     
   // hist def //
   Int_t x_bin=(Int_t) abs(x_max-x_min)/2;
-  Int_t a_bin=(Int_t) 2*abs(a_max-a_min);
+  Int_t a_bin=(Int_t) 2*abs(a_max-a_min+30);
   Int_t b_bin=(Int_t) 2*abs(b_max-b_min);
-  
+
+  TH1F *hyc;
   TH1F *hx[5];
   TH1F *ha[5];
-  TH1F *hy;
+  TH1F *hy[5];
   TH1F *hb[5];
   for(int i=0;i<5;i++){
     hx[i]=new TH1F(Form("hx[%d]",i),"hx",x_bin,x_min,x_max);
-    ha[i]=new TH1F(Form("ha[%d]",i),"ha",a_bin,a_min,a_max);
+    ha[i]=new TH1F(Form("ha[%d]",i),"ha",a_bin,a_min-15,a_max+15);
+    hy[i]=new TH1F(Form("hy[%d]",i),"hy",200,-100,100);
     hb[i]=new TH1F(Form("hb[%d]",i),"hb",200,-100,100);
   } 
-  hy=new TH1F("hy","hy",200,-50,50);
+  hyc=new TH1F("hyc","hyc",200,-50,50);
   
   //  cut def //
   TCut acut = Form("abs(vdc_gr_m.fA*1000-%e)<%e",0.5*(a_max+a_min),0.5*abs(a_max-a_min));
@@ -118,7 +124,7 @@ void fit(TString conf){
   gStyle->SetStatW(0.15);
   gStyle->SetOptFit(1100);
 
-  tree->Draw("gr.fYc>>hy",pid_proton && xcut && acut,"");
+  tree->Draw("gr.fYc>>hyc",pid_proton && xcut && acut,"");
   for(int i=0; i<n_y; i++){
     g[n_y-1]->SetParameter(3*i,par.y_height);
     g[n_y-1]->SetParameter(3*i+1,par.y[i]);
@@ -129,12 +135,12 @@ void fit(TString conf){
   g[n_y-1]->SetParameter(3*n_y+1,0.0);
   g[n_y-1]->SetParameter(3*n_y+2,0.0);
   
-  hy->Fit(Form("g[%d]",n_y-1),"","",par.y_min,par.y_max);
+  hyc->Fit(Form("g[%d]",n_y-1),"","",par.y_min,par.y_max);
   
   for(int i=0; i<n_y; i++){
-    y_fp[i] = g[n_y-1]->GetParameter(3*i+1);
-    y_fp_err[i]= g[n_y-1]->GetParError(3*i+1);
-    y_fp_sigma[i]= g[n_y-1]->GetParameter(3*i+2);
+    yc_fp[i] = g[n_y-1]->GetParameter(3*i+1);
+    yc_fp_err[i]= g[n_y-1]->GetParError(3*i+1);
+    yc_fp_sigma[i]= g[n_y-1]->GetParameter(3*i+2);
   }
   
   // x_fitting //
@@ -144,13 +150,13 @@ void fit(TString conf){
   for(int i=0; i<n_y; i++){
     c2->cd(i+1);
     
-    TCut ycut = Form("abs(gr.fYc-%e)<%e",y_fp[i],1.0*y_fp_sigma[i]);
+    TCut ycut = Form("abs(gr.fYc-%e)<%e",yc_fp[i],1.0*yc_fp_sigma[i]);
     tree->Draw(Form("vdc_gr_m.fX>>hx[%d]",i),pid_proton && acut && ycut,"");
     
     Double_t x_mean=hx[i]->GetXaxis()->GetBinCenter((hx[i]->GetMaximumBin())); 
     Double_t x_height= hx[i]->GetBinContent(hx[i]->GetMaximumBin());
     g1->SetParameters(x_height,x_mean,10.0,0.0);
-    
+    g1->SetParLimits(2,0.0,100.0);
     hx[i]->Fit("g1","","",x_mean-20.0,x_mean+20.0);
     
     x_fp[i] = g1->GetParameter(1);
@@ -165,35 +171,55 @@ void fit(TString conf){
   for(int i=0; i<n_y; i++){
     c3->cd(i+1);
     
-    TCut ycut = Form("abs(gr.fYc-%e)<%e",y_fp[i],1.0*y_fp_sigma[i]);
+    TCut ycut = Form("abs(gr.fYc-%e)<%e",yc_fp[i],1.0*yc_fp_sigma[i]);
     TCut cut=Form("abs(vdc_gr_m.fX-%e)<%e",x_fp[i],1.0*x_fp_sigma[i]);
     
     tree->Draw(Form("vdc_gr_m.fA*1000>>ha[%d]",i),pid_proton && cut && ycut,"");
     Double_t a_mean=ha[i]->GetXaxis()->GetBinCenter((ha[i]->GetMaximumBin())); 
     Double_t a_height= ha[i]->GetBinContent(ha[i]->GetMaximumBin());
     g1->SetParameters(a_height,a_mean,5.,0.);
-    
+    g1->SetParLimits(2,0.0,100.0);
     ha[i]->Fit("g1","","",a_mean-5.0,a_mean+5.0);
     
     a_fp[i] = g1->GetParameter(1);
     a_fp_err[i] = g1->GetParError(1);
     a_fp_sigma[i] = g1->GetParameter(2);
   }
-  
-  // b fitting //
-  std::cout << "---------------- b fitting ---------------" << std::endl; 
-  c4->cd();
+  // y fitting //
+  std::cout << "---------------- y fitting ---------------" << std::endl; 
+    c4->cd();
   
   for(int i=0; i<n_y; i++){
     c4->cd(i+1);
-    TCut ycut = Form("abs(gr.fYc-%e)<%e",y_fp[i],1.0*y_fp_sigma[i]);
-    TCut cut=Form("abs(vdc_gr_m.fX-%e)<%e && abs(vdc_gr_m.fA*1000-%e)<%e",x_fp[i],3.0*x_fp_sigma[i],a_fp[i],3.0*a_fp_sigma[i]);
+    TCut ycut = Form("abs(gr.fYc-(%e))<%e",yc_fp[i],1.0*yc_fp_sigma[i]);
+    TCut cut=Form("abs(vdc_gr_m.fX-%e)<%e && abs(vdc_gr_m.fA*1000-%e)<%e",x_fp[i],3.0*x_fp_sigma[i],a_fp[i],3.0*a_fp_sigma[i]);    
+    tree->Draw(Form("vdc_gr_m.fY>>hy[%d]",i),pid_proton && cut && ycut,"");
+    
+    Double_t y_mean=hy[i]->GetXaxis()->GetBinCenter((hy[i]->GetMaximumBin()));
+    Double_t y_height= hy[i]->GetBinContent(hy[i]->GetMaximumBin());
+    g1->SetParameters(y_height,y_mean,5.,0.);
+    g1->SetParLimits(2,0.0,100.0);
+    hy[i]->Fit("g1","","",y_mean-2.5,y_mean+2.5);
+    
+    y_fp[i] = g1->GetParameter(1);
+    y_fp_err[i] = g1->GetParError(1);
+    y_fp_sigma[i] = g1->GetParameter(2);
 
+  }
+  // b fitting //
+  std::cout << "---------------- b fitting ---------------" << std::endl; 
+  c5->cd();
+  
+  for(int i=0; i<n_y; i++){
+    c5->cd(i+1);
+    TCut ycut = Form("abs(gr.fYc-(%e))<%e",yc_fp[i],1.0*yc_fp_sigma[i]);
+    TCut cut=Form("abs(vdc_gr_m.fX-%e)<%e && abs(vdc_gr_m.fA*1000-%e)<%e",x_fp[i],3.0*x_fp_sigma[i],a_fp[i],3.0*a_fp_sigma[i]);    
     tree->Draw(Form("vdc_gr_m.fB*1000>>hb[%d]",i),pid_proton && cut && ycut,"");
+    
     Double_t b_mean=hb[i]->GetXaxis()->GetBinCenter((hb[i]->GetMaximumBin())); 
     Double_t b_height= hb[i]->GetBinContent(hb[i]->GetMaximumBin());
     g1->SetParameters(b_height,b_mean,5.,0.);
-    
+    g1->SetParLimits(2,0.0,100.0);
     hb[i]->Fit("g1","","",b_mean-5.0,b_mean+5.0);
     
     b_fp[i] = g1->GetParameter(1);
@@ -204,8 +230,8 @@ void fit(TString conf){
 
   //  theta and phi //
   for(int i=0;i<n_y;i++){
-    theta[i] = (Double_t) -1.0*dtheta*( ( (int) (par.ID[i]/5) )-2 );
-    phi[i] = (Double_t) dphi*( ( (int) par.ID[i]%5) - 3 );
+    theta[i] = (Double_t) -1.0*dtheta*( ( (int) ((par.ID[i]-1)/5) )-2 );
+    phi[i] = (Double_t) -1.0*dphi*( ( (int) (par.ID[i]-1)%5) - 2 );
   }
   
   
@@ -217,10 +243,21 @@ void fit(TString conf){
     ofile << a_fp[i] << " " << a_fp_err[i] << " ";
     ofile << y_fp[i] << " " << y_fp_err[i] << " ";
     ofile << b_fp[i] << " " << b_fp_err[i] << " ";
+    ofile << yc_fp[i] << " " << yc_fp_err[i];
     ofile << std::endl;
   }
 
   ofile.close();
+  c1->cd();
+  c1->SaveAs(dir_figs+"_yc.png");
+  c2->cd();
+  c2->SaveAs(dir_figs+"_x.png");
+  c3->cd();
+  c3->SaveAs(dir_figs+"_a.png");
+  c4->cd();
+  c4->SaveAs(dir_figs+"_y.png");
+  c5->cd();
+  c5->SaveAs(dir_figs+"_b.png");
 
 }
 

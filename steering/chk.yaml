@@ -4,11 +4,9 @@
 # lastest update : 2022.07.01 by Y.HIJIKATA
 
 Anchor:
-#  - &input data_e583/run@NUM@.bld
   - &input data/run@NUM@.bld
-#  - &input /home/e483/data/run2005.bld
-  - &histout output/run@NUM@.hist.root
-  - &output output/run@NUM@.root
+  - &histout output/chk/run@NUM@.hist.root
+  - &output output/chk/run@NUM@.root
 
 Processor:
   - name: timer
@@ -46,12 +44,12 @@ Processor:
       FileName: hist/pla/pla_gr.hist.yaml
       OutputFilename: *histout
 
-#  - name: hist_pla_las
-#    type: art::TTreeProjectionProcessor
-#    parameter:
-#      Type: art::TTreeProjection
-#      FileName: hist/pla/pla_las.hist.yaml	
-#      OutputFilename: *histout
+  - name: hist_pla_las
+    type: art::TTreeProjectionProcessor
+    parameter:
+      Type: art::TTreeProjection
+      FileName: hist/pla/pla_las.hist.yaml	
+      OutputFilename: *histout
 
   - name: hist_pid
     type: art::TTreeProjectionProcessor
@@ -67,7 +65,7 @@ Processor:
       FileName: hist/vdc/vdc_gr.hist.yaml
       OutputFilename: *histout
 
-  - name: hist_vdc_gr
+  - name: hist_vdc_las
     type: art::TTreeProjectionProcessor
     parameter:
       Type: art::TTreeProjection

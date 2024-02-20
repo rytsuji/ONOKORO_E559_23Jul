@@ -14,7 +14,15 @@
   TCut tc = Form("abs(tref_las.fTiming-tref_grtrig.fTiming-%e)<20",tc_center);
   TCut tc_acc = Form("abs(tref_las.fTiming-tref_grtrig.fTiming-%e)<20",tc_center_acc);  
   TCut cut = coin && gr && las && tc;
+  TCut cut_acc = coin && gr && las && tc_acc;
 
-  tree->SetAlias("dt","tref_las.fTiming-tref_grtrig.fTiming");
   
+  tree->SetAlias("dt","tref_las.fTiming-tref_grtrig.fTiming");
+  double Eb=227.8;
+  double mp=938.7668154;
+  double md=1876.091703;
+  double PGR=563.697;
+  double PLAS=423.762;
+  
+  tree->SetAlias("Sx",Form("%e-sqrt( pow(%e*(1+delta),2.0)+pow(%e,2.0) )-sqrt(pow(%e*(1+delta_las),2.0)+pow(%e,2.0))+%e+%e",Eb,PGR,mp,PLAS,md,mp,md));
 }

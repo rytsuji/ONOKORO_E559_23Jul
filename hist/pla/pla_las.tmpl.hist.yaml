@@ -1,0 +1,66 @@
+anchor:
+  - &qbin  200
+  - &qmin  0
+  - &qmax  4000
+
+include:
+  - name: hist/pla/pla.tmpl.hist.yaml
+    replace: 
+      GRLAS: las
+      VMEFERA: @VMEFERA@
+      NUM: 3
+      TMIN: -3000
+      TMAX:  3000
+      QMAX:  4000
+      TDIFFMIN: -200
+      TDIFFMAX:  200
+      QDIFFMIN: -200
+      QDIFFMAX:  200
+
+  - name: hist/pla/pla.tmpl.hist.yaml
+    replace: 
+      GRLAS: las
+      VMEFERA: @VMEFERA@
+      NUM: 4
+      TMIN: -3000
+      TMAX:  3000
+      QMAX:  4000
+      TDIFFMIN: -200
+      TDIFFMAX:  200
+      QDIFFMIN: -200
+      QDIFFMAX:  200
+
+  - name: hist/pla/pla.tmpl.hist.yaml
+    replace: 
+      GRLAS: las
+      VMEFERA: @VMEFERA@
+      NUM: 5
+      TMIN: -3000
+      TMAX:  3000
+      QMAX:  4000
+      TDIFFMIN: -200
+      TDIFFMAX:  200
+      QDIFFMIN: -200
+      QDIFFMAX:  200
+
+  - name: hist/pla/pla.tmpl.hist.yaml
+    replace: 
+      GRLAS: las
+      VMEFERA: @VMEFERA@
+      NUM: 6
+      TMIN: -3000
+      TMAX:  3000
+      QMAX:  4000
+      TDIFFMIN: -200
+      TDIFFMAX:  200
+      QDIFFMIN: -200
+      QDIFFMAX:  200
+
+group:
+  - name: plastic_las_@VMEFERA@_correlation
+    title: Plastic LAS  @VMEFERA@ Correlation
+    contents:
+      - name: de2(pla_las5)_de1
+        title: DE1 vs DE2
+        x: ["pla_gr_@VMEFERA@_3.GetQAve()", *qbin, *qmin, *qmax]
+        y: ["pla_gr_@VMEFERA@_5.GetQAve()", *qbin, *qmin, *qmax]

@@ -1,52 +1,94 @@
-{
-
-  std::vector<Double_t> a;
-  std::string fname1 ="/home/tsuji/work/art_analysis/e559_23jul/macro/sieve_slit_gr/gr_theta_calib.dat" ;
-  std::ifstream infile1(fname1);
-  std::string iline1;
-  while(getline(infile1,iline1)){
-    std::istringstream line(iline1);
-    std::string str[2];
-    line >> str[0] >>str[1];
-    a.push_back(std::stod(str[0]));
-  }
-
-  while(a.size()<11){
-    a.push_back(0);
-  }
-  
-  std::vector<Double_t> b;
-  std::string fname2 ="/home/tsuji/work/art_analysis/e559_23jul/macro/sieve_slit_gr/gr_phi_calib.dat";
-  std::ifstream infile2(fname2);
-  std::string iline2;
-  while(getline(infile2,iline2)){
-    std::istringstream line(iline2);
-    std::string str[2];
-    line >> str[0] >>str[1];
-    b.push_back(std::stod(str[0]));
-  }
-
-  while(b.size()<20){
-    b.push_back(0);
-  }
-  
-  tree->SetAlias("grx","vdc_gr_m.GetX(-1000)");
-  tree->SetAlias("gry","vdc_gr_m.GetY(-1000)");
-  tree->SetAlias("gra","vdc_gr_m.fA*1000");
-  tree->SetAlias("grb","vdc_gr_m.fB*1000");
-  TString theta_gr=Form("-(%e+%e*gra+%e*grx+%e*pow(grx,2.0)+%e*pow(gry,2.0)+%e*pow(grx,3.0))/1000.0*TMath::RadToDeg()",a[0],a[1],a[2],a[3],a[4],a[5]);
-
-  TString phi_gr=Form("(%e + %e*gra + %e*grx + %e*gry + %e*pow(gra,2.0) + %e*pow(grx,2.0) + %e*pow(gry,2.0) + %e*gra*grx + %e*grx*gry + %e*gry*gra + %e*pow(grx,3.0))/1000.0*TMath::RadToDeg()",b[0],b[1],b[2],b[3],b[4],b[5],b[6],b[7],b[8],b[9],b[10]);
-  tree->SetAlias("theta_gr",theta_gr);
-  tree->SetAlias("phi_gr",phi_gr);
+std::vector<double> a;
+std::vector<double> b;
+std::vector<double> c; 
 
 
+void read_theta(void);
+void read_phi(void);
+void read_delta(void);
+double theta(double fX,double fA,double fY,double fB);
+double phi(double fX,double fA,double fY,double fB);
+double delta(double fX,double fA,double fY,double fB);
 
 
- 
-  //tree->SetAlias("phi_gr",Form("%e+%e*vdc_gr_m.fA*1000+%e*vdc_gr_m.fX+%e*vdc_gr_m.fY+%e*vdc_gr_m.fA*1000*vdc_gr_m.fX+%e*vdc_gr_m.fX*vdc_gr_m.fY+%e*vdc_gr_m.fA*1000*vdc_gr_m.fY+%e*vdc_gr_m.fA*1000*vdc_gr_m.fX*vdc_gr_m.fY",b0,b1,b2,b3,b4,b5,b6,b7));
+void gr_calib(void){
 
+  read_theta();
+  read_phi();
+  read_delta();
+
+  //gROOT->LoadMacro("macro/yb_gr/setalias.C");
+
+
+  tree->SetAlias("theta_gr","TMath::RadToDeg()/1000.0*theta(vdc_gr_m.fX,vdc_gr_m.fA*1000,vdc_gr_m.fY,vdc_gr_m.fB*1000)");
+  tree->SetAlias("phi_gr","TMath::RadToDeg()/1000.0*phi(vdc_gr_m.fX,vdc_gr_m.fA*1000,vdc_gr_m.fY,vdc_gr_m.fB*1000)");
+  tree->SetAlias("delta","delta(vdc_gr_m.fX,vdc_gr_m.fA*1000,vdc_gr_m.fY,vdc_gr_m.fB*1000)");
 }
 
+void read_theta(void){
+  TString input="macro/sieve_gr/gr_theta_calib.dat";
+  std::ifstream infile((std::string) input);
+  std::string iline;
+  while(getline(infile,iline)){
+    std::istringstream iss(iline);
+    std::string str;
+    iss >> str;
+    a.push_back(std::stod(str));
+  }
+}
 
+void read_phi(void){
+  TString input="macro/sieve_gr/gr_phi_calib.dat";
+  std::ifstream infile((std::string) input);
+  std::string iline;
+  while(getline(infile,iline)){
+    std::istringstream iss(iline);
+    std::string str;
+    iss >> str;
+    b.push_back(std::stod(str));
+  }
+}
+
+void read_delta(void){
+  TString input="macro/sieve_gr/gr_delta_calib.dat";
+  std::ifstream infile((std::string) input);
+  std::string iline;
+  while(getline(infile,iline)){
+    std::istringstream iss(iline);
+    std::string str;
+    iss >> str;
+    c.push_back(std::stod(str));
+  }
+}
+
+double theta(double fX,double fA,double fY,double fB){
+  double func = a[0]+a[1]*fX+a[2]*fA;
+  func += a[3]*fX*fX+a[4]*fX*fA+a[5]*fA*fA;
+  func += a[6]*fY*fY+a[7]*fY*fB+a[8]*fB*fB;
+  func += a[9]*pow(fX,3);
+  return func;
+}
+
+double phi(double fX,double fA,double fY,double fB){
+  /*
+    double yc = fYc+b[0]*fB+b[1]*fX*fB;
+    double func1 = b[2]+b[3]*fYc+b[4]*fA+b[5]*fX;
+    double func2 = b[6]*fYc*fA+b[7]*fYc*fX+b[8]*fX*fA;
+    double func3 = b[9]*fYc*fA*fX;
+  */u
+  
+  double func1 = b[0]+b[1]*fY+b[2]*fA+b[3]*fX;
+  double func2 = b[4]*fY*fA+b[5]*fY*fX+b[6]*fX*fA;
+  double func3 = b[7]*fY*fA*fX;
+  double func4 = b[8]*fB+b[9]*fB*fX;
+  //double func4 = b[8]*fB+b[9]*fB*fA+b[10]*fB*fX+b[11]*fY*fB;
+  //double func5 = b[12]*pow(fY,2.0)+b[13]*pow(fY,3.0);
+
+  return func1+func2+func3+func4;
+  
+}
+
+double delta(double fX,double fA,double fY,double fB){
+  return c[0]+c[1]*fX+c[2]*fA+c[3]*fX*fX+c[4]*fX*fA+c[5]*fA*fA+c[6]*sqrt(abs(fX+c[7]*fX*fA*fA));
+}
 

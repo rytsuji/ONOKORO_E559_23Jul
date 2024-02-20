@@ -16,6 +16,21 @@ group:
  - name: vdc_gr
    title: VDC GR hist
    contents:
+     - name: gr_x1_timing
+       title: VDC GR X1 Timing
+       x: ["vdc_gr_x1.fTiming", 1000, -1000, 1000]
+     - name: gr_x2_timing
+       title: VDC GR X2 Timing
+       x: ["vdc_gr_x2.fTiming", 1000, -1000, 1000]
+     - name: gr_u1_timing
+       title: VDC GR U1 Timing
+       x: ["vdc_gr_u1.fTiming", 1000, -1000, 1000]
+     - name: gr_u2_timing
+       title: VDC GR U2 Timing
+       x: ["vdc_gr_u2.fTiming", 1000, -1000, 1000]       
+     - name: ssr
+       title: VDC GR SSR
+       x: ["vdc_gr_m.GetSSR()", 1000, 0, 10E-23]
      - name: x_gr
        title: X  GR
        x: ["vdc_gr_m.fX", *xbin, *xmin, *xmax]

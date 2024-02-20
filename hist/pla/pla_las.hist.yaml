@@ -1,0 +1,18 @@
+include:
+  - name: hist/pla/pla_las.tmpl.hist.yaml
+    replace: 
+      VMEFERA: vme
+
+  - name: hist/pla/pla_las.tmpl.hist.yaml
+    replace: 
+      VMEFERA: fera
+
+
+
+#
+#
+#
+#
+#
+#
+#

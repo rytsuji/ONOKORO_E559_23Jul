@@ -20,10 +20,13 @@
 
 #pragma link C++ class art::TVDCClusterizationSizeSelectableProcessor+;
 //#pragma link C++ class art::TMWDCTrackingClustSizeSelectableProcessor+;
-#pragma link C++ class art::TVDCTrackingXZRotatableProcessor+;
+//#pragma link C++ class art::TVDCTrackingXZRotatableProcessor+;
+#pragma link C++ class art::TVDCFPTrackingProcessor+;
 //#pragma link C++ class art::TVDCTrackingPlaneSelectableProcessor+;
 #pragma link C++ class art::TTimingChargeMultiHitMappingProcessor+;
 #pragma link C++ class art::TTimeTrefValidator+;
+#pragma link C++ class art::TOpticsData+;
+#pragma link C++ class art::TOpticsCalibrationProcessor+;
 
 #endif // __CINT__
 

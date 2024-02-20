@@ -3,7 +3,7 @@ double elastic(double theta,int target,double Q){
 
   theta = theta*TMath::DegToRad();
 
-  double E_beam=230.0;
+  double E_beam=227.8;
   double au=931.478;
   double m[4]={1.007825*au,12.0*au,15.99491461957*au,39.962590863*au}; //p,12C,16O,40Ca                                                                       
 

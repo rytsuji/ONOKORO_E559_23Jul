@@ -4,22 +4,27 @@ set(SOURCES
   # add your source files
   TVDCClusterizationSizeSelectableProcessor.cc
   #TMWDCTrackingClustSizeSelectableProcessor.cc
-  TVDCTrackingXZRotatableProcessor.cc
+  #TVDCTrackingXZRotatableProcessor.cc
+  TVDCFPTrackingProcessor.cc
   #TVDCTrackingPlaneSelectableProcessor.cc
   TTimingChargeMultiHitMappingProcessor.cc
   TTimeTrefValidator.cc
-
-)
+  TOpticsData.cc
+  TOpticsCalibrationProcessor.cc
+  )
 
 set(HEADERS
   # add your source files
   TVDCClusterizationSizeSelectableProcessor.h
   #TMWDCTrackingClustSizeSelectableProcessor.h
-  TVDCTrackingXZRotatableProcessor.h
+  #TVDCTrackingXZRotatableProcessor.h
+  TVDCFPTrackingProcessor.h
   #TVDCTrackingPlaneSelectableProcessor.h
   TTimingChargeMultiHitMappingProcessor.h
   TTimeTrefValidator.h
-)
+  TOpticsData.h
+  TOpticsCalibrationProcessor.h
+  )
 
 add_library(${LIB_NAME} SHARED ${SOURCES})
 

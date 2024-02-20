@@ -154,6 +154,7 @@ Processor:
 #     OutputCollection: vdc_gr
 #     OutputTransparency: 0
 
+
   - name: proc_tracking_gr
     type: art::TVDCTrackingProcessor
     parameter:

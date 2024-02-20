@@ -16,22 +16,16 @@ Processor:
         TVALMAX2L: -148
         TVALMIN2R: -161
         TVALMAX2R: -149		
- 
-
-#  - include:
-#      name: pla_gr.tmpl.yaml
-#      replace:
-#        CATID: 21
-#        VMEFERA: vme
- 
 
   - include:
       name: pla_gr.tmpl.yaml
       replace:
         CATID: 11
         VMEFERA: fera
-      
-      
 
 
-      
+#  - include:
+#      name: pla_gr.tmpl.yaml
+#      replace:
+#        CATID: 21
+#        VMEFERA: test

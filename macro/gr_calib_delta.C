@@ -1,0 +1,77 @@
+std::vector<double> a;
+std::vector<double> b; 
+Double_t r2d=TMath::RadToDeg()/1000.0;
+double dtheta = r2d*7.55;
+double dphi = r2d*20.13;
+
+void read_theta(void);
+void read_phi(void);
+double theta(double fX,double fA,double fY,double fB);
+double phi(double fX,double fA,double fY,double fB);
+
+
+void gr_calib(void){
+
+  read_theta();
+  read_phi();
+
+  gROOT->LoadMacro("macro/yb_gr/setalias.C");
+
+
+  tree->SetAlias("theta_gr","TMath::RadToDeg()/1000.0*theta(vdc_gr_m.fX,vdc_gr_m.fA*1000,vdc_gr_m.fY,vdc_gr_m.fB*1000)");
+  tree->SetAlias("phi_gr","TMath::RadToDeg()/1000.0*phi(vdc_gr_m.fX,vdc_gr_m.fA*1000,vdc_gr_m.fY,vdc_gr_m.fB*1000)");
+
+}
+
+void read_theta(void){
+  TString input="macro/sieve_gr/gr_theta_calib.dat";
+  std::ifstream infile((std::string) input);
+  std::string iline;
+  while(getline(infile,iline)){
+    std::istringstream iss(iline);
+    std::string str;
+    iss >> str;
+    a.push_back(std::stod(str));
+  }
+}
+
+void read_phi(void){
+  TString input="macro/sieve_gr/gr_phi_calib.dat";
+  std::ifstream infile((std::string) input);
+  std::string iline;
+  while(getline(infile,iline)){
+    std::istringstream iss(iline);
+    std::string str;
+    iss >> str;
+    b.push_back(std::stod(str));
+  }
+}
+
+
+double theta(double fX,double fA,double fY,double fB){
+  double func = a[0]+a[1]*fX+a[2]*fA+a[3]*fY+a[4]*fB;
+  func += a[5]*fA*fA+a[6]*fX*fX+a[7]*fX*fA;
+  return func;
+}
+
+double phi(double fX,double fA,double fY,double fB){
+  /*
+    double yc = fYc+b[0]*fB+b[1]*fX*fB;
+    double func1 = b[2]+b[3]*fYc+b[4]*fA+b[5]*fX;
+    double func2 = b[6]*fYc*fA+b[7]*fYc*fX+b[8]*fX*fA;
+    double func3 = b[9]*fYc*fA*fX;
+  */
+  
+  double func1 = b[0]+b[1]*fY+b[2]*fA+b[3]*fX;
+  double func2 = b[4]*fY*fA+b[5]*fY*fX+b[6]*fX*fA;
+  double func3 = b[7]*fY*fA*fX;
+  double func4 = b[8]*fB+b[9]*fB*fX;
+  //double func4 = b[8]*fB+b[9]*fB*fA+b[10]*fB*fX+b[11]*fY*fB;
+  //double func5 = b[12]*pow(fY,2.0)+b[13]*pow(fY,3.0);
+
+  return func1+func2+func3+func4;
+  
+}
+
+
+
