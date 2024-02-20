@@ -1,0 +1,115 @@
+group:
+ - name: phys
+   title: phys (p,pX)
+   contents:
+
+     - name: tc_check
+       title: True coin (LAS-GR) with true coincidence cut
+       x: ["tref_las.fTiming-tref_grtrig.fTiming", 1500, 0, 1500]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)<abs(@TC_MAX@-@TC_MIN@)/2.0"
+
+     - name: ac_check
+       title: True coin (LAS-GR) with accidental coincidence cut
+       x: ["tref_las.fTiming-tref_grtrig.fTiming", 1500, 0, 1500]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)>abs(@TC_MAX@-@TC_MIN@)/2.0 && abs(tref_las.fTiming-tref_grtrig.fTiming-(@TMIN@+@TMAX@)/2.0)<abs(@TMAX@-@TMIN@)/2.0"
+
+     - name: x_gr_las_tc
+       title: X correlation GR vs LAS with true coin
+       x: ["vdc_gr_m.fX", 200, -1000, 1000]
+       y: ["vdc_las_fp.fX", 200, -1000, 1000]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)<abs(@TC_MAX@-@TC_MIN@)/2.0"
+
+
+     - name: x_gr_las_ac
+       title: X correlation GR vs LAS with accidental coin
+       x: ["vdc_gr_m.fX", 200, -1000, 1000]
+       y: ["vdc_las_fp.fX", 200, -1000, 1000]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)>abs(@TC_MAX@-@TC_MIN@)/2.0 && abs(tref_las.fTiming-tref_grtrig.fTiming-(@TMIN@+@TMAX@)/2.0)<abs(@TMAX@-@TMIN@)/2.0"
+
+
+     - name: sx_tc
+       title: Sx with true coin
+       x: ["@EB@+@MP@+@MX@-sqrt(pow(@MP@,2.0)+pow(0.3*3.0*@BGR@*(1-vdc_gr_m.fX*4.5764467e-05),2.0))-sqrt(pow(@MX@,2.0)+pow(0.3*1.75*@BLAS@*(1+vdc_las_fp.fX*1.85e-04),2.0))", @SXBIN@, 0, 50]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)<abs(@TC_MAX@-@TC_MIN@)/2.0 && abs(vdc_gr_m.fX)<500"
+
+     - name: sx_ac
+       title: Sx with accidental coin
+       x: ["@EB@+@MP@+@MX@-sqrt(pow(@MP@,2.0)+pow(0.3*3.0*@BGR@*(1-vdc_gr_m.fX*4.5764467e-05),2.0))-sqrt(pow(@MX@,2.0)+pow(0.3*1.75*@BLAS@*(1+vdc_las_fp.fX*1.85e-04),2.0))", @SXBIN@, 0, 50]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)>abs(@TC_MAX@-@TC_MIN@)/2.0 && abs(tref_las.fTiming-tref_grtrig.fTiming-(@TMIN@+@TMAX@)/2.0)<abs(@TMAX@-@TMIN@)/2.0 && abs(vdc_gr_m.fX)<500"
+
+
+     - name: xa_gr_tc
+       title: X-A correlation of GR  with true coin
+       x: ["vdc_gr_m.fX", 200, -1000, 1000]
+       y: ["vdc_gr_m.fA*1000", 200, -100, 100]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)<abs(@TC_MAX@-@TC_MIN@)/2.0"
+
+     - name: xa_las_tc
+       title: X-A correlation of  LAS with true coin
+       x: ["vdc_las_fp.fX", 200, -1000, 1000]
+       y: ["vdc_las_fp.fA*1000", 200, -500, 500]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)<abs(@TC_MAX@-@TC_MIN@)/2.0"
+
+
+     - name: x_gr_las_tc_m
+       title: X correlation GR vs LAS with true coin
+       x: ["vdc_gr_m.fX", 200, -1000, 1000]
+       y: ["vdc_las_m.fX", 200, -1000, 1000]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)<abs(@TC_MAX@-@TC_MIN@)/2.0"
+
+     - name: x_gr_las_tc_xu
+       title: X correlation GR vs LAS with true coin
+       x: ["vdc_gr_m.fX", 200, -1000, 1000]
+       y: ["vdc_las_xu.fX", 200, -1000, 1000]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)<abs(@TC_MAX@-@TC_MIN@)/2.0"
+
+     - name: x_gr_las_tc_uv
+       title: X correlation GR vs LAS with true coin
+       x: ["vdc_gr_m.fX", 200, -1000, 1000]
+       y: ["vdc_las_uv.fX", 200, -1000, 1000]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)<abs(@TC_MAX@-@TC_MIN@)/2.0"
+
+
+     - name: x_gr_las_tc_xv
+       title: X correlation GR vs LAS with true coin
+       x: ["vdc_gr_m.fX", 200, -1000, 1000]
+       y: ["vdc_las_xv.fX", 200, -1000, 1000]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)<abs(@TC_MAX@-@TC_MIN@)/2.0"
+
+
+     - name: sx_xgr1
+       title: Sx vs GR X D_LAS=2.1e-04
+       x: [vdc_gr_m.fX,500,-1000,1000]	      
+       y: ["@EB@+@MP@+@MX@-sqrt(pow(@MP@,2.0)+pow(0.3*3.0*@BGR@*(1-vdc_gr_m.fX*4.5764467e-05),2.0))-sqrt(pow(@MX@,2.0)+pow(0.3*1.75*@BLAS@*(1+vdc_las_fp.fX*2.1e-04),2.0))", @SXBIN@, 0, 50]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)<abs(@TC_MAX@-@TC_MIN@)/2.0 && abs(vdc_gr_m.fX)<500"
+
+
+     - name: sx_xgr2
+       title: Sx vs GR X D_LAS=2.0e-04
+       x: [vdc_gr_m.fX,500,-1000,1000]	      
+       y: ["@EB@+@MP@+@MX@-sqrt(pow(@MP@,2.0)+pow(0.3*3.0*@BGR@*(1-vdc_gr_m.fX*4.5764467e-05),2.0))-sqrt(pow(@MX@,2.0)+pow(0.3*1.75*@BLAS@*(1+vdc_las_fp.fX*2.0e-04),2.0))", @SXBIN@, 0, 50]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)<abs(@TC_MAX@-@TC_MIN@)/2.0 && abs(vdc_gr_m.fX)<500"
+
+     - name: sx_xgr3
+       title: Sx vs GR X D_LAS=1.9e-04
+       x: [vdc_gr_m.fX,500,-1000,1000]	             
+       y: ["@EB@+@MP@+@MX@-sqrt(pow(@MP@,2.0)+pow(0.3*3.0*@BGR@*(1-vdc_gr_m.fX*4.5764467e-05),2.0))-sqrt(pow(@MX@,2.0)+pow(0.3*1.75*@BLAS@*(1+vdc_las_fp.fX*1.9e-04),2.0))", @SXBIN@, 0, 50]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)<abs(@TC_MAX@-@TC_MIN@)/2.0 && abs(vdc_gr_m.fX)<500"
+
+     - name: sx_xgr4
+       title: Sx vs GR X D_LAS=1.8e-04
+       x: [vdc_gr_m.fX,500,-1000,1000]	             
+       y: ["@EB@+@MP@+@MX@-sqrt(pow(@MP@,2.0)+pow(0.3*3.0*@BGR@*(1-vdc_gr_m.fX*4.5764467e-05),2.0))-sqrt(pow(@MX@,2.0)+pow(0.3*1.75*@BLAS@*(1+vdc_las_fp.fX*1.8e-04),2.0))", @SXBIN@, 0, 50]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)<abs(@TC_MAX@-@TC_MIN@)/2.0 && abs(vdc_gr_m.fX)<500"
+
+     - name: sx_xgr5
+       title: Sx vs GR X D_LAS=1.7e-04
+       x: [vdc_gr_m.fX,500,-1000,1000]	             
+       y: ["@EB@+@MP@+@MX@-sqrt(pow(@MP@,2.0)+pow(0.3*3.0*@BGR@*(1-vdc_gr_m.fX*4.5764467e-05),2.0))-sqrt(pow(@MX@,2.0)+pow(0.3*1.75*@BLAS@*(1+vdc_las_fp.fX*1.7e-04),2.0))", @SXBIN@, 0, 50]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)<abs(@TC_MAX@-@TC_MIN@)/2.0 && abs(vdc_gr_m.fX)<500"
+
+     - name: sx_xgr6
+       title: Sx vs GR X D_LAS=tamii ana
+       x: [vdc_gr_m.fX,500,-1000,1000]	             
+       y: ["@EB@+@MP@+@MX@-sqrt(pow(@MP@,2.0)+pow(0.3*3.0*@BGR@*(1-vdc_gr_m.fX*4.5764467e-05),2.0))-sqrt(pow(@MX@,2.0)+pow(0.3*1.75*@BLAS@*(1+vdc_las_fp.fX*2.2468e-04),2.0))", @SXBIN@, 0, 50]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)<abs(@TC_MAX@-@TC_MIN@)/2.0 && abs(vdc_gr_m.fX)<500"
