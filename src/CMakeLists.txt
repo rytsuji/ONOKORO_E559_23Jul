@@ -6,6 +6,7 @@ set(SOURCES
   #TMWDCTrackingClustSizeSelectableProcessor.cc
   #TVDCTrackingXZRotatableProcessor.cc
   TVDCFPTrackingProcessor.cc
+  TVDCClusterMeanCharge.cc
   #TVDCTrackingPlaneSelectableProcessor.cc
   TTimingChargeMultiHitMappingProcessor.cc
   TTimeTrefValidator.cc
@@ -19,6 +20,7 @@ set(HEADERS
   #TMWDCTrackingClustSizeSelectableProcessor.h
   #TVDCTrackingXZRotatableProcessor.h
   TVDCFPTrackingProcessor.h
+  TVDCClusterMeanCharge.h
   #TVDCTrackingPlaneSelectableProcessor.h
   TTimingChargeMultiHitMappingProcessor.h
   TTimeTrefValidator.h

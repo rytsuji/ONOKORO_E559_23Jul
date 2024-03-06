@@ -1,0 +1,9 @@
+Processor:
+  - include:
+      name: gate_las.tmpl.yaml
+      replace:
+        Q_LAS_MIN: 400
+        Q_LAS_MAX: 1400
+        T_LAS_MIN: 44
+        T_LAS_MAX: 65
+        RF: rf2

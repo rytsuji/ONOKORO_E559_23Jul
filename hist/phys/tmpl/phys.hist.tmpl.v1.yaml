@@ -81,3 +81,21 @@ group:
        x: [vdc_gr_m.fX,500,-1000,1000]	             
        y: ["@EB@+@MP@+@MX@-sqrt(pow(@MP@,2.0)+pow(0.3*3.0*@BGR@*(1-vdc_gr_m.fX*4.5764467e-05),2.0))-sqrt(pow(@MX@,2.0)+pow(0.3*1.75*@BLAS@*(1+vdc_las_fp.fX*2.2468e-04),2.0))", @SXBIN@, 0, 50]
        cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)<abs(@TC_MAX@-@TC_MIN@)/2.0 && abs(vdc_gr_m.fX)<500"
+
+     - name: sx_rf1
+       title: Sx vs RF1 
+       x: ["fmod(tref_las.fTiming-rf1.fTiming+710.,71.)", 142, 0, 71]
+       y: ["@EB@+@MP@+@MX@-sqrt(pow(@MP@,2.0)+pow(0.3*3.0*@BGR@*(1-vdc_gr_m.fX*4.5764467e-05),2.0))-sqrt(pow(@MX@,2.0)+pow(0.3*1.75*@BLAS@*(1+vdc_las_fp.fX*2.2468e-04),2.0))", @SXBIN@, 0, 50]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)<abs(@TC_MAX@-@TC_MIN@)/2.0 && abs(vdc_gr_m.fX)<500"
+
+     - name: sx_rf2
+       title: Sx vs RF2 
+       x: ["fmod(tref_las.fTiming-rf2.fTiming+710.,71.)", 142, 0, 71]
+       y: ["@EB@+@MP@+@MX@-sqrt(pow(@MP@,2.0)+pow(0.3*3.0*@BGR@*(1-vdc_gr_m.fX*4.5764467e-05),2.0))-sqrt(pow(@MX@,2.0)+pow(0.3*1.75*@BLAS@*(1+vdc_las_fp.fX*2.2468e-04),2.0))", @SXBIN@, 0, 50]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)<abs(@TC_MAX@-@TC_MIN@)/2.0 && abs(vdc_gr_m.fX)<500"
+
+     - name: sx_rf3
+       title: Sx vs RF3 
+       x: ["fmod(tref_las.fTiming-rf3.fTiming+710.,71.)", 142, 0, 71]
+       y: ["@EB@+@MP@+@MX@-sqrt(pow(@MP@,2.0)+pow(0.3*3.0*@BGR@*(1-vdc_gr_m.fX*4.5764467e-05),2.0))-sqrt(pow(@MX@,2.0)+pow(0.3*1.75*@BLAS@*(1+vdc_las_fp.fX*2.2468e-04),2.0))", @SXBIN@, 0, 50]
+       cut: "abs(tref_las.fTiming-tref_grtrig.fTiming-(@TC_MIN@+@TC_MAX@)/2.0)<abs(@TC_MAX@-@TC_MIN@)/2.0 && abs(vdc_gr_m.fX)<500"

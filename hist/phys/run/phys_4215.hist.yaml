@@ -1,1 +1,13 @@
-phys_4216.hist.yaml
+include:
+  - name: hist/phys/phys.hist.tmpl.yaml
+    replace:
+      TC_MIN: 770
+      TC_MAX: 820
+      TMIN: 200
+      TMAX: 1400
+      EB: 227.8
+      MP: 938.7
+      MX: 1876.09
+      BGR: 517.943
+      BLAS: 1149.243
+      SXBIN: 250

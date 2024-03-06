@@ -1,0 +1,320 @@
+
+# file : vdc_las.yaml 
+# date : 2023.06.20 by Y.HIJIKATA
+# lastest update : 2023.06.20 by Y.HIJIKATA
+
+alias:
+#  - &timegate [-200,100]
+#  - &timegate [-700,-350]
+#  - &timegate [-1590,-1340]
+  - &timegate_x1 [@VDCLAS_X1_TMIN@,@VDCLAS_X1_TMAX@]
+  - &timegate_x2 [@VDCLAS_X2_TMIN@,@VDCLAS_X2_TMAX@]
+  - &timegate_u1 [@VDCLAS_U1_TMIN@,@VDCLAS_U1_TMAX@]  
+  - &timegate_u2 [@VDCLAS_U2_TMIN@,@VDCLAS_U2_TMAX@]
+  - &timegate_v1 [@VDCLAS_V1_TMIN@,@VDCLAS_V1_TMAX@]
+  - &timegate_v2 [@VDCLAS_V2_TMIN@,@VDCLAS_V2_TMAX@]  
+
+Processor:
+
+# parameter load
+
+  - name: proc_vdc_las_prm_geo
+    type: art::TParameterLoader
+    parameter:
+      Name: vdc_las
+      Type: art::TMWDCParameter
+      FileName: prm/vdc_las/geometry.yaml
+  - name: proc_vdc_las_prm_geo
+    type: art::TParameterLoader
+    parameter:
+      Name: vdc_las_clust
+      Type: art::TMWDCParameter
+      FileName: prm/vdc_las/geometry.yaml
+
+  - name: proc_vdc_las_prm_x1
+    type: art::TParameterLoader
+    parameter:
+      Name: VDC_PRM_LAS_X1
+      Type: art::TMonotoneTableConverter
+      FileName: prm/vdc_las/dt2dl/@DT2DL@/x1.dat
+  - name: proc_vdc_las_prm_x2
+    type: art::TParameterLoader
+    parameter:
+      Name: VDC_PRM_LAS_X2
+      Type: art::TMonotoneTableConverter
+      FileName: prm/vdc_las/dt2dl/@DT2DL@/x2.dat
+  - name: proc_vdc_ge_prm_u1
+    type: art::TParameterLoader
+    parameter:
+      Name: VDC_PRM_LAS_U1
+      Type: art::TMonotoneTableConverter
+      FileName: prm/vdc_las/dt2dl/@DT2DL@/u1.dat
+  - name: proc_vdc_las_prm_u2
+    type: art::TParameterLoader
+    parameter:
+      Name: VDC_PRM_LAS_U2
+      Type: art::TMonotoneTableConverter
+      FileName: prm/vdc_las/dt2dl/@DT2DL@/u2.dat
+  - name: proc_vdc_ge_prm_v1
+    type: art::TParameterLoader
+    parameter:
+      Name: VDC_PRM_LAS_V1
+      Type: art::TMonotoneTableConverter
+      FileName: prm/vdc_las/dt2dl/@DT2DL@/v1.dat
+  - name: proc_vdc_las_prm_v2
+    type: art::TParameterLoader
+    parameter:
+      Name: VDC_PRM_LAS_V2
+      Type: art::TMonotoneTableConverter
+      FileName: prm/vdc_las/dt2dl/@DT2DL@/v2.dat
+
+  - name: proc_vdc_las_str_prm_ch2ns
+    type: art::TParameterArrayLoader
+    parameter:
+      Name:     prm_vdc_las_ch2ns
+      Type:     art::TAffineConverter
+      FileName: prm/vdc_las/vdc_las_ch2ns.dat
+
+# load & plane calib
+
+  - name: proc_vdc_las_raw
+    type: art::TTimingChargeMappingProcessor
+    parameter:
+      CatID: 52
+      TimingTypeID: 0
+      TrailingComesFirst: 0
+      OutputCollection: vdc_las_raw
+      OutputTransparency: 0
+  - name: proc_vdc_las_calib
+    type: art::TTimingChargeCalibrationProcessor
+    parameter:
+      InputCollection:      vdc_las_raw
+      TimingConverterArray: prm_vdc_las_ch2ns
+      ChargeConverterArray: prm_vdc_las_ch2ns
+      OutputCollection:     vdc_las_cal
+      OutputTransparency:   0
+  - name: proc_vdc_las_subdirs
+    type: art::TTimingSubtractionProcessor
+    parameter:
+      InputCollection: vdc_las_cal
+      MaxDetID: 800
+      OutputCollection: vdc_las_dt
+      StartTimingCollection: pla_las_vme_3
+      UseMultipleStartTiming: 1
+      UseStartAsTimestamp: 1  # [Int_t] timestamp is start (if 1) or end (if 0)
+      StartTimingDetID: 0  # [Int_t] detID of reference timing source (if -1 use any id)      
+#      ValidTimeRange: [-1000, 1000, 0]  # [vector<Double_t>] [min,max,offset] => Tmin = offset + min etc. ignored if min == max
+      ValidTimeRange: [-3000, -1000, 0]  # [vector<Double_t>] [min,max,offset] => Tmin = offset + min etc. ignored if min == max
+
+  - name: proc_vdc_las_plane
+    type: art::TVDCPlaneProcessor
+    parameter:
+      InputCollection: vdc_las_dt
+      MWDCName: vdc_las
+      SortType: 0
+      ConverterList:
+        - VDC_PRM_LAS_X1
+        - VDC_PRM_LAS_U1
+        - VDC_PRM_LAS_V1
+        - VDC_PRM_LAS_X2
+        - VDC_PRM_LAS_U2
+        - VDC_PRM_LAS_V2
+      OutputTransparency: 0 
+      GR_OR_LAS: 1
+
+# cluster analysis
+  - name: proc_vdc_las_cluster_x1
+    type: art::TVDCClusterizationSizeSelectableProcessor
+#    type: art::TVDCClusterizationProcessor
+    parameter:
+      InputCollection: vdc_las_x1
+      OutputCollection: vdc_las_clust_x1
+      ClustSize: 3
+      OutputTransparency: 0
+
+  - name: proc_vdc_las_cluster_x2
+    type: art::TVDCClusterizationSizeSelectableProcessor
+    #type: art::TVDCClusterizationProcessor
+    parameter:
+      InputCollection: vdc_las_x2
+      OutputCollection: vdc_las_clust_x2
+      ClustSize: 3
+      OutputTransparency: 0
+
+  - name: proc_vdc_las_cluster_u1
+    type: art::TVDCClusterizationSizeSelectableProcessor
+#    type: art::TVDCClusterizationProcessor
+    parameter:
+      InputCollection: vdc_las_u1
+      OutputCollection: vdc_las_clust_u1
+      ClustSize: 3
+      OutputTransparency: 0
+
+  - name: proc_vdc_las_cluster_u2
+    type: art::TVDCClusterizationSizeSelectableProcessor
+#    type: art::TVDCClusterizationProcessor
+    parameter:
+      InputCollection: vdc_las_u2
+      OutputCollection: vdc_las_clust_u2
+      ClustSize: 3
+      OutputTransparency: 0
+      
+  - name: proc_vdc_las_cluster_v1
+    type: art::TVDCClusterizationSizeSelectableProcessor
+#    type: art::TVDCClusterizationProcessor
+    parameter:
+      InputCollection: vdc_las_v1
+      OutputCollection: vdc_las_clust_v1
+      ClustSize: 3
+      OutputTransparency: 0
+      
+  - name: proc_vdc_las_cluster_v2
+    type: art::TVDCClusterizationSizeSelectableProcessor
+#    type: art::TVDCClusterizationProcessor
+    parameter:
+      InputCollection: vdc_las_v2
+      OutputCollection: vdc_las_clust_v2
+      ClustSize: 3
+      OutputTransparency: 0
+
+#tot gate
+
+  - name: gate_array_init
+    type: art::TGateArrayInitializer
+    parameter:
+      OutputTransparency: 1
+
+  - name: tot_gate
+    type: art::TTreeFormulaGateProcessor
+    parameter:
+      Definitions:
+        - "gate_tot; abs((vdc_las_clust_x1.fCharge+vdc_las_clust_x2.fCharge+vdc_las_clust_u1.fCharge+vdc_las_clust_u2.fCharge)/4.0-(@TOT_MIN@+@TOT_MAX@)/2.0)<abs(@TOT_MAX@-@TOT_MIN@)/2.0"
+
+  - name: stop_proc
+    type: art::TGateStopProcessor
+    parameter:
+      GateName: "gate_tot"
+
+
+
+# tracking
+
+  - name: proc_tracking_las_fp
+    type: art::TVDCFPTrackingProcessor
+    parameter:
+      OffsetX: 5.44
+      OffsetZ: -100.36
+      FPTiltedAngleY: -57
+      VDCTiltedAngleY: 3.81
+      InputCollection:
+        - vdc_las_clust_x1
+        - vdc_las_clust_u1
+#       - vdc_las_clust_v1
+        - vdc_las_clust_x2
+        - vdc_las_clust_u2
+#        - vdc_las_clust_v2
+      OutputCollection: vdc_las_fp
+      OutputTransparency: 0
+
+  - name: proc_tracking_las
+    type: art::TVDCTrackingProcessor
+    parameter:
+      TiltedAngleY: 0 
+      InputCollection:
+        - vdc_las_clust_x1
+        - vdc_las_clust_u1
+        - vdc_las_clust_v1
+        - vdc_las_clust_x2
+        - vdc_las_clust_u2
+        - vdc_las_clust_v2
+      OutputCollection: vdc_las
+      OutputTransparency: 0
+
+  - name: proc_tracking_las
+    type: art::TVDCTrackingProcessor
+    parameter:
+      TiltedAngleY: -60
+      InputCollection:
+        - vdc_las_clust_x1
+        - vdc_las_clust_u1
+        - vdc_las_clust_v1
+        - vdc_las_clust_x2
+        - vdc_las_clust_u2
+        - vdc_las_clust_v2
+      OutputCollection: vdc_las_m
+      OutputTransparency: 0
+
+  - name: proc_tracking_las
+    type: art::TVDCTrackingProcessor    
+    parameter:
+      TiltedAngleY: -60
+      InputCollection:
+        - vdc_las_clust_x1
+        - vdc_las_clust_u1
+#        - vdc_las_clust_v1
+        - vdc_las_clust_x2
+        - vdc_las_clust_u2
+#       - vdc_las_clust_v2
+      OutputCollection: vdc_las_xu
+      OutputTransparency: 0
+
+  - name: proc_tracking_las
+    type: art::TVDCTrackingProcessor
+    parameter:
+      TiltedAngleY: -60
+      InputCollection:
+        - vdc_las_clust_x1
+#        - vdc_las_clust_u1
+        - vdc_las_clust_v1
+        - vdc_las_clust_x2
+#        - vdc_las_clust_u2
+        - vdc_las_clust_v2
+      OutputCollection: vdc_las_xv
+      OutputTransparency: 0
+
+  - name: proc_tracking_las
+    type: art::TVDCTrackingProcessor
+    parameter:
+      TiltedAngleY: -60
+      InputCollection:
+#        - vdc_las_clust_x1
+        - vdc_las_clust_u1
+        - vdc_las_clust_v1
+#        - vdc_las_clust_x2
+        - vdc_las_clust_u2
+        - vdc_las_clust_v2
+      OutputCollection: vdc_las_uv
+      OutputTransparency: 0
+      
+# calibration processor
+
+  - name: proc_vdc_calib_x1
+    type: art::TMWDCCalibrationProcessor
+    parameter:
+      InputCollection: vdc_las_x1
+      TimingGate: *timegate_x1
+  - name: proc_vdc_calib_x2
+    type: art::TMWDCCalibrationProcessor
+    parameter:
+      InputCollection: vdc_las_x2
+      TimingGate: *timegate_x2
+  - name: proc_vdc_calib_u1
+    type: art::TMWDCCalibrationProcessor
+    parameter:
+      InputCollection: vdc_las_u1
+      TimingGate: *timegate_u1
+  - name: proc_vdc_calib_u2
+    type: art::TMWDCCalibrationProcessor
+    parameter:
+      InputCollection: vdc_las_u2
+      TimingGate: *timegate_u2
+  - name: proc_vdc_calib_v1
+    type: art::TMWDCCalibrationProcessor
+    parameter:
+      InputCollection: vdc_las_v1
+      TimingGate: *timegate_v1
+  - name: proc_vdc_calib_v2
+    type: art::TMWDCCalibrationProcessor
+    parameter:
+      InputCollection: vdc_las_v2
+      TimingGate: *timegate_v2

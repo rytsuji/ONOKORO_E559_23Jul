@@ -22,6 +22,7 @@
 //#pragma link C++ class art::TMWDCTrackingClustSizeSelectableProcessor+;
 //#pragma link C++ class art::TVDCTrackingXZRotatableProcessor+;
 #pragma link C++ class art::TVDCFPTrackingProcessor+;
+#pragma link C++ class art::TVDCClusterMeanCharge+;
 //#pragma link C++ class art::TVDCTrackingPlaneSelectableProcessor+;
 #pragma link C++ class art::TTimingChargeMultiHitMappingProcessor+;
 #pragma link C++ class art::TTimeTrefValidator+;

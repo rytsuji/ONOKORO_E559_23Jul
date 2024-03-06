@@ -1,0 +1,26 @@
+alias:
+  - &vdc_las_tmin -1600
+  - &vdc_las_tmax -1300
+
+Processor:
+  - include:
+      name: vdc_las.tmpl.yaml
+      replace:	
+        VDCLAS_X1_TMIN: *vdc_las_tmin
+        VDCLAS_X1_TMAX: *vdc_las_tmax
+	
+        VDCLAS_X2_TMIN: *vdc_las_tmin
+        VDCLAS_X2_TMAX: *vdc_las_tmax
+	
+        VDCLAS_U1_TMIN: *vdc_las_tmin
+        VDCLAS_U1_TMAX: *vdc_las_tmax
+	
+        VDCLAS_U2_TMIN: *vdc_las_tmin
+        VDCLAS_U2_TMAX: *vdc_las_tmax
+	
+        VDCLAS_V1_TMIN: *vdc_las_tmin
+        VDCLAS_V1_TMAX: *vdc_las_tmax
+	
+        VDCLAS_V2_TMIN: *vdc_las_tmin
+        VDCLAS_V2_TMAX: *vdc_las_tmax
+        DT2DL: 4135

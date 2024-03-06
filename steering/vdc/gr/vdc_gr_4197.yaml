@@ -1,0 +1,17 @@
+alias:
+  - &vdc_gr_tmin -210
+  - &vdc_gr_tmax 50  
+
+Processor:
+  - include:
+      name: vdc_gr.tmpl.yaml
+      replace:
+        VDCGR_X1_TMIN: *vdc_gr_tmin
+        VDCGR_X1_TMAX: *vdc_gr_tmax
+        VDCGR_X2_TMIN: *vdc_gr_tmin
+        VDCGR_X2_TMAX: *vdc_gr_tmax
+        VDCGR_U1_TMIN: *vdc_gr_tmin
+        VDCGR_U1_TMAX: *vdc_gr_tmax
+        VDCGR_U2_TMIN: *vdc_gr_tmin
+        VDCGR_U2_TMAX: *vdc_gr_tmax
+        DT2DL: 4197

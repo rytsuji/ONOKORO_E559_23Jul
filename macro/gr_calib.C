@@ -75,7 +75,7 @@ double phi(double fX,double fA,double fY,double fB){
     double func1 = b[2]+b[3]*fYc+b[4]*fA+b[5]*fX;
     double func2 = b[6]*fYc*fA+b[7]*fYc*fX+b[8]*fX*fA;
     double func3 = b[9]*fYc*fA*fX;
-  */u
+  */
   
   double func1 = b[0]+b[1]*fY+b[2]*fA+b[3]*fX;
   double func2 = b[4]*fY*fA+b[5]*fY*fX+b[6]*fX*fA;
@@ -89,6 +89,7 @@ double phi(double fX,double fA,double fY,double fB){
 }
 
 double delta(double fX,double fA,double fY,double fB){
-  return c[0]+c[1]*fX+c[2]*fA+c[3]*fX*fX+c[4]*fX*fA+c[5]*fA*fA+c[6]*sqrt(abs(fX+c[7]*fX*fA*fA));
+  //return c[0]+c[1]*fX+c[2]*fA+c[3]*fX*fX+c[4]*fX*fA+c[5]*fA*fA+c[6]*sqrt(abs(fX+c[7]*fX*fA*fA));
+  return c[0]+c[1]*fX+c[2]*fA+c[3]*fX*fX+c[5]*fA*fA+c[6]*sqrt(abs(fX+c[7]*fX*fA*fA));
 }
 
